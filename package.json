@@ -9,6 +9,15 @@
   },
   "devDependencies": {
     "nuxt": "3.0.0-rc.6",
-    "push-dir": "^0.4.1"
+    "push-dir": "^0.4.1",
+    "@babel/eslint-parser": "^7.15.0",
+    "@nuxtjs/eslint-config": "^6.0.1",
+    "@nuxtjs/eslint-module": "^3.0.2",
+    "eslint": "^7.32.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-nuxt": "^2.0.0",
+    "eslint-plugin-prettier": "^3.4.0",
+    "eslint-plugin-vue": "^7.15.1",
+    "prettier": "^2.3.2"
   }
 }
