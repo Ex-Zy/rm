@@ -3,7 +3,7 @@
   "scripts": {
     "build": "nuxt build",
     "dev": "nuxt dev",
-    "generate": "nuxt generate",
+    "generate": "nuxt generate && touch dist/.nojekyll",
     "preview": "nuxt preview",
     "deploy": "push-dir --dir=dist --branch=gh-pages --cleanup"
   },
