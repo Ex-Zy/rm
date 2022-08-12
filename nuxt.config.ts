@@ -17,7 +17,7 @@ export default defineNuxtConfig({
     "element-plus/dist/index.css": resolve(__dirname, "./node_modules/element-plus/dist/index.css"),
     "element-plus": resolve(__dirname, "./node_modules/element-plus/dist/index.full.js"),
   },
-  plugins: ["~/plugins/ui"],
+  plugins: ["~/plugins/element.plus"],
   vite: {
     optimizeDeps: {
       include: ["element-plus"],
