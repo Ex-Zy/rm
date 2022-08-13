@@ -1,7 +1,5 @@
 <template>
-  <el-button @click="visible = true">
-    Open Dialog with customized header
-  </el-button>
+  <el-button @click="visible = true"> Open Dialog with customized header </el-button>
   <el-dialog v-model="visible" :show-close="false">
     <template #header="{ close, titleId, titleClass }">
       <div class="my-header">
@@ -17,11 +15,11 @@
 </template>
 
 <script lang="ts" setup>
-import { ref } from 'vue'
-import { ElButton, ElDialog } from 'element-plus'
-import { CircleCloseFilled } from '@element-plus/icons-vue'
+import { ref } from "vue";
+import { ElButton, ElDialog } from "element-plus";
+import { CircleCloseFilled } from "@element-plus/icons-vue";
 
-const visible = ref(false)
+const visible = ref(false);
 </script>
 
 <style scoped>
