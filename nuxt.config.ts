@@ -23,4 +23,7 @@ export default defineNuxtConfig({
       include: ["element-plus"],
     },
   },
+  typescript: {
+    shim: false,
+  },
 });
