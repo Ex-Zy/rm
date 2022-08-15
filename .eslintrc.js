@@ -22,6 +22,7 @@ module.exports = {
       },
     ],
     "vue/no-multiple-template-root": 0,
+    "max-len": [1, { code: 130 }],
   },
   globals: {
     _: true,

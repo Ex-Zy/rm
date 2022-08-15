@@ -1,8 +1,7 @@
-import { resolve } from "path";
+import { fileURLToPath } from "node:url";
 import { defineNuxtConfig } from "nuxt";
 
 const isProduction = process.env.NODE_ENV === "production";
-const __dirname = new URL(".", import.meta.url).pathname;
 
 // https://v3.nuxtjs.org/api/configuration/nuxt.config
 export default defineNuxtConfig({
@@ -14,8 +13,10 @@ export default defineNuxtConfig({
     baseURL: isProduction ? "/rm/" : "/",
   },
   alias: {
-    "element-plus/dist/index.css": resolve(__dirname, "./node_modules/element-plus/dist/index.css"),
-    "element-plus": resolve(__dirname, "./node_modules/element-plus/dist/index.full.js"),
+    "element-plus/dist/index.css": fileURLToPath(new URL("./node_modules/element-plus/dist/index.css", import.meta.url)),
+    "element-plus": fileURLToPath(new URL("./node_modules/element-plus/dist/index.full.js", import.meta.url)),
+    "@api": fileURLToPath(new URL("./api/", import.meta.url)),
+    "@": fileURLToPath(new URL("./", import.meta.url)),
   },
   plugins: ["~/plugins/element.plus"],
   vite: {

@@ -22,6 +22,7 @@
   },
   "dependencies": {
     "@apollo/client": "^3.6.9",
+    "@vue/apollo-composable": "^4.0.0-alpha.19",
     "@vue/apollo-option": "^4.0.0-alpha.20",
     "element-plus": "^2.2.12",
     "graphql": "^16.5.0",
