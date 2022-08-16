@@ -1,5 +1,8 @@
 import { fileURLToPath } from "node:url";
 import { defineNuxtConfig } from "nuxt";
+import AutoImport from "unplugin-auto-import/vite";
+import Components from "unplugin-vue-components/vite";
+import { ElementPlusResolver } from "unplugin-vue-components/resolvers";
 
 const isProduction = process.env.NODE_ENV === "production";
 
@@ -21,5 +24,15 @@ export default defineNuxtConfig({
   },
   build: {
     transpile: ["@apollo/client/core", "@vue/apollo-composable", "ts-invariant/process", "element-plus"],
+  },
+  vite: {
+    plugins: [
+      AutoImport({
+        resolvers: [ElementPlusResolver()],
+      }),
+      Components({
+        resolvers: [ElementPlusResolver()],
+      }),
+    ],
   },
 });
