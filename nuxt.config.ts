@@ -13,16 +13,8 @@ export default defineNuxtConfig({
     baseURL: isProduction ? "/rm/" : "/",
   },
   alias: {
-    "element-plus/dist/index.css": fileURLToPath(new URL("./node_modules/element-plus/dist/index.css", import.meta.url)),
-    "element-plus": fileURLToPath(new URL("./node_modules/element-plus/dist/index.full.js", import.meta.url)),
-    "@api": fileURLToPath(new URL("./api/", import.meta.url)),
     "@": fileURLToPath(new URL("./", import.meta.url)),
-  },
-  plugins: ["~/plugins/element.plus"],
-  vite: {
-    optimizeDeps: {
-      include: ["element-plus"],
-    },
+    "@api": fileURLToPath(new URL("./api/", import.meta.url)),
   },
   typescript: {
     shim: false,
