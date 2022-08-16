@@ -19,4 +19,7 @@ export default defineNuxtConfig({
   typescript: {
     shim: false,
   },
+  build: {
+    transpile: ["@apollo/client/core", "@vue/apollo-composable", "ts-invariant/process", "element-plus"],
+  },
 });
