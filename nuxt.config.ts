@@ -23,16 +23,6 @@ export default defineNuxtConfig({
     shim: false,
   },
   build: {
-    transpile: ["@apollo/client/core", "@vue/apollo-composable", "ts-invariant/process", "element-plus"],
-  },
-  vite: {
-    plugins: [
-      AutoImport({
-        resolvers: [ElementPlusResolver()],
-      }),
-      Components({
-        resolvers: [ElementPlusResolver()],
-      }),
-    ],
+    transpile: ["@apollo/client/core", "@vue/apollo-composable", "ts-invariant/process"],
   },
 });
