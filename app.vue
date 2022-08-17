@@ -31,10 +31,11 @@ const currentPage1 = ref(1);
     <el-container style="height: 100vh">
       <el-header height="50">Header</el-header>
       <el-main>
+        <h2 style="text-align: center">The Rick and Morty characters as seen on the TV show</h2>
         <ClientOnly>
           <el-alert v-if="error" :title="error.message" type="error" effect="dark" />
           <template v-else>
-            <el-table v-loading="loading" :data="characters" style="width: 100%" height="75vh" border>
+            <el-table v-loading="loading" :data="characters" style="width: 100%" height="65vh" stripe border>
               <el-table-column prop="id" label="id" width="50" />
               <el-table-column prop="name" label="Name" width="220">
                 <template #default="{ row }">
@@ -47,15 +48,21 @@ const currentPage1 = ref(1);
                 </template>
               </el-table-column>
               <el-table-column prop="species" label="Species" width="100" />
-              <el-table-column prop="gender" label="Gender" width="100" />
-              <el-table-column prop="status" label="Status" width="100" />
               <el-table-column prop="created" label="Created" sortable>
                 <template #default="{ row }">{{ dayjs(row.created).format("MM/DD/YYYY") }}</template>
+              </el-table-column>
+              <el-table-column prop="gender" label="Gender" width="100" />
+              <el-table-column prop="status" label="Status" width="100" />
+              <el-table-column prop="location" label="Location">
+                <template #default="{ row }">{{ row.location.dimension }}</template>
+              </el-table-column>
+              <el-table-column prop="type" label="Type">
+                <template #default="{ row }">{{ row.type || "No data" }}</template>
               </el-table-column>
             </el-table>
             <el-pagination
               v-model:currentPage="currentPage1"
-              style="margin-top: 15px; justify-content: center;"
+              style="margin-top: 15px; justify-content: center"
               :page-size="20"
               :background="true"
               layout="prev, pager, next"
