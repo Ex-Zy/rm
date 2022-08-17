@@ -23,6 +23,7 @@
   "dependencies": {
     "@apollo/client": "^3.6.9",
     "@vue/apollo-composable": "^4.0.0-alpha.19",
+    "dayjs": "^1.11.5",
     "element-plus": "^2.2.12",
     "graphql": "^16.5.0",
     "graphql-tag": "^2.12.6"

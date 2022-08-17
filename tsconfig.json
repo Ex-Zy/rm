@@ -3,5 +3,9 @@
   "extends": "./.nuxt/tsconfig.json",
   "vueCompilerOptions": {
     "experimentalDisableTemplateSupport": true
+  },
+  "compilerOptions": {
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
   }
 }

@@ -1,76 +1,76 @@
 <script lang="ts" setup>
 import "element-plus/dist/index.css";
-import { ElTable, ElTableColumn, ElAvatar, ElContainer, ElHeader, ElMain, ElFooter, ElPagination } from "element-plus";
-import { provide } from "vue";
+import * as dayjs from "dayjs";
+import {
+  ElTable,
+  ElTableColumn,
+  ElAvatar,
+  ElContainer,
+  ElHeader,
+  ElMain,
+  ElFooter,
+  ElPagination,
+  ElLink,
+  ElAlert,
+  vLoading,
+} from "element-plus";
 import { useQuery } from "@vue/apollo-composable";
 import apolloProvider from "./apollo/apollo.provider";
 import { GET_CHARACTERS } from "./api/queries";
 
 provide("apolloProvider", apolloProvider);
 
-function formatDate(date, format = "mm/dd/yy") {
-  const map = {
-    mm: date.getMonth() + 1,
-    dd: date.getDate(),
-    yy: date.getFullYear().toString().slice(-2),
-    yyyy: date.getFullYear(),
-  };
-
-  return format.replace(/mm|dd|yy|yyy/gi, (matched) => map[matched]);
-}
-const { result, loading } = useQuery(GET_CHARACTERS);
+const { result, loading, error } = useQuery(GET_CHARACTERS);
 const characters = computed(() => result.value?.characters?.results ?? []);
 
 const currentPage1 = ref(1);
-const small = ref(false);
-const background = ref(true);
-const disabled = ref(false);
-
-const handleSizeChange = (val: number) => {
-  console.log(`${val} items per page`);
-};
-const handleCurrentChange = (val: number) => {
-  console.log(`current page: ${val}`);
-};
 </script>
 
 <template>
   <div class="common-layout">
-    <el-container>
-      <el-header height="50">Header loading: {{ loading }} </el-header>
+    <el-container style="height: 100vh">
+      <el-header height="50">Header</el-header>
       <el-main>
-        <el-table
-          :data="characters"
-          style="width: 100%"
-          height="75vh"
-          border
-          :default-sort="{ prop: 'created', order: 'descending' }"
-        >
-          <el-table-column prop="id" label="id" width="50" />
-          <el-table-column prop="name" label="Name" width="180" />
-          <el-table-column prop="image" label="Avatar" width="80">
-            <template #default="{ row }">
-              <el-avatar :size="50" :src="row.image" />
-            </template>
-          </el-table-column>
-          <el-table-column prop="species" label="Species" width="100" />
-          <el-table-column prop="gender" label="Gender" width="100" />
-          <el-table-column prop="status" label="Status" width="100" />
-          <el-table-column prop="created" label="Created" />
-        </el-table>
-        <div class="demo-pagination-block">
-          <el-pagination
-            v-model:currentPage="currentPage1"
-            :page-size="20"
-            :small="small"
-            :disabled="disabled"
-            :background="true"
-            layout="prev, pager, next"
-            :total="1000"
-          />
-        </div>
+        <ClientOnly>
+          <el-alert v-if="error" :title="error.message" type="error" effect="dark" />
+          <template v-else>
+            <el-table v-loading="loading" :data="characters" style="width: 100%" height="75vh" border>
+              <el-table-column prop="id" label="id" width="50" />
+              <el-table-column prop="name" label="Name" width="220">
+                <template #default="{ row }">
+                  <el-link type="primary">{{ row.name }}</el-link>
+                </template>
+              </el-table-column>
+              <el-table-column prop="image" label="Avatar" width="80">
+                <template #default="{ row }">
+                  <el-avatar :size="50" :src="row.image" />
+                </template>
+              </el-table-column>
+              <el-table-column prop="species" label="Species" width="100" />
+              <el-table-column prop="gender" label="Gender" width="100" />
+              <el-table-column prop="status" label="Status" width="100" />
+              <el-table-column prop="created" label="Created" sortable>
+                <template #default="{ row }">{{ dayjs(row.created).format("MM/DD/YYYY") }}</template>
+              </el-table-column>
+            </el-table>
+            <el-pagination
+              v-model:currentPage="currentPage1"
+              style="margin-top: 15px; justify-content: center;"
+              :page-size="20"
+              :background="true"
+              layout="prev, pager, next"
+              :total="1000"
+            />
+          </template>
+        </ClientOnly>
       </el-main>
       <el-footer>Footer</el-footer>
     </el-container>
   </div>
 </template>
+
+<style>
+body {
+  font-family: "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+}
+</style>
