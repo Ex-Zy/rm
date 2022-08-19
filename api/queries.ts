@@ -26,6 +26,27 @@ export const GET_CHARACTERS = gql`
   }
 `;
 
+export const GET_ONE_CHARACTER = gql`
+  query ($id: ID = 1) {
+    character(id: $id) {
+      id
+      name
+      image
+      status
+      species
+      type
+      gender
+      created
+      location {
+        dimension
+        name
+        type
+        created
+      }
+    }
+  }
+`;
+
 export const GET_EPISODES = gql`
   query ($page: Int = 1) {
     episodes(page: $page) {
@@ -44,6 +65,34 @@ export const GET_EPISODES = gql`
         characters {
           name
           status
+        }
+      }
+    }
+  }
+`;
+
+export const GET_ONE_EPISODE = gql`
+  query ($id: ID = 1) {
+    episode(id: $id) {
+      id
+      name
+      air_date
+      episode
+      created
+      characters {
+        id
+        name
+        image
+        status
+        species
+        type
+        gender
+        created
+        location {
+          dimension
+          name
+          type
+          created
         }
       }
     }
