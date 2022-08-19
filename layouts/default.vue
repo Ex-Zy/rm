@@ -1,16 +1,14 @@
 <script lang="ts" setup>
 import { ElContainer, ElMain, ElFooter, ElMenu, ElMenuItem } from "element-plus";
-
-const activeIndex2 = ref("1");
 </script>
 
 <template>
-  <el-menu :default-active="activeIndex2" class="el-menu-demo" mode="horizontal">
-    <el-menu-item index="0"><NuxtLink to="/" style="text-decoration: none">Home</NuxtLink></el-menu-item>
-    <el-menu-item index="1">
+  <el-menu :default-active="$route.path" class="el-menu-demo" mode="horizontal">
+    <el-menu-item index="/" route="/"><NuxtLink to="/" style="text-decoration: none">Home</NuxtLink></el-menu-item>
+    <el-menu-item index="/characters" route="/characters">
       <NuxtLink to="/characters" style="text-decoration: none">Characters</NuxtLink>
     </el-menu-item>
-    <el-menu-item index="2">
+    <el-menu-item index="/episodes" route="/episodes">
       <NuxtLink to="/episodes" style="text-decoration: none">Episodes</NuxtLink>
     </el-menu-item>
   </el-menu>
