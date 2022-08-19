@@ -1,73 +1,43 @@
-<script lang="ts" setup>
-import dayjs from "dayjs";
-import { ElTable, ElTableColumn, ElAvatar, ElPagination, ElLink, ElAlert, ElTag, vLoading } from "element-plus";
-import { useQuery } from "@vue/apollo-composable";
-import { GET_CHARACTERS } from "@/api/queries";
-
-const currentPage = ref(1);
-const { result, loading, error } = useQuery(GET_CHARACTERS, { page: currentPage });
-
-const characters = computed(() => result.value?.characters.results ?? []);
-const totalRows = computed(() => result.value?.characters.info.count || 0);
-
-const getTagType = (active) => {
-  const statuses = {
-    Alive: "success",
-    Dead: "danger",
-    unknown: "warning",
-  };
-
-  return statuses[active];
-};
-</script>
-
 <template>
   <div class="page-wrapper">
-    <h2 style="text-align: center">The Rick and Morty characters as seen on the TV show</h2>
-    <el-alert v-if="error" :title="error.message" type="error" effect="dark" show-icon />
-    <template v-else>
-      <ClientOnly>
-        <el-table v-loading="loading" :data="characters" style="width: 100%" height="65vh" stripe border>
-          <el-table-column prop="id" label="id" width="50" />
-          <el-table-column prop="name" label="Name" width="220">
-            <template #default="{ row }">
-              <el-link type="primary">{{ row.name }}</el-link>
-            </template>
-          </el-table-column>
-          <el-table-column prop="image" label="Avatar" width="80">
-            <template #default="{ row }">
-              <el-avatar :size="50" :src="row.image" />
-            </template>
-          </el-table-column>
-          <el-table-column prop="species" label="Species" width="100" />
-          <el-table-column prop="created" label="Created" sortable>
-            <template #default="{ row }">{{ dayjs(row.created).format("MM/DD/YYYY") }}</template>
-          </el-table-column>
-          <el-table-column prop="gender" label="Gender" width="100" />
-          <el-table-column prop="status" label="Status" width="100" align="center">
-            <template #default="{ row }">
-              <el-tag :type="getTagType(row.status)" effect="dark" round size="large">
-                {{ row.status }}
-              </el-tag>
-            </template>
-          </el-table-column>
-          <el-table-column prop="location" label="Location">
-            <template #default="{ row }">{{ row.location.dimension }}</template>
-          </el-table-column>
-          <el-table-column prop="type" label="Type">
-            <template #default="{ row }">{{ row.type || "Unknown" }}</template>
-          </el-table-column>
-        </el-table>
-        <el-pagination
-          v-if="characters.length"
-          v-model:currentPage="currentPage"
-          style="margin-top: 15px; justify-content: center"
-          :page-size="20"
-          :background="true"
-          layout="total, prev, pager, next, jumper"
-          :total="totalRows"
-        />
-      </ClientOnly>
-    </template>
+    <h2 style="text-align: center">Never Watched ‘Rick and Morty’?</h2>
+    <p>
+      Rick and Morty is an American adult animated science-fiction sitcom created by Justin Roiland and Dan Harmon for Cartoon
+      Network's nighttime programming block Adult Swim. The series follows the misadventures of cynical mad scientist Rick Sanchez
+      and his good-hearted but fretful grandson Morty Smith, who split their time between domestic life and interdimensional
+      adventures.
+    </p>
+
+    <p>
+      Roiland voices the eponymous characters, with Chris Parnell, Spencer Grammer, and Sarah Chalke voicing the rest of Rick and
+      Morty's family. The series originated from an animated short parody film of Back to the Future created by Roiland for
+      Channel 101, a short-film festival cofounded by Harmon. Since its debut, the series has received critical acclaim for its
+      originality, creativity and humor. They have won two Primetime Emmy Awards for Outstanding Animated Program.
+    </p>
+    <p>
+      The fifth season premiered on June 20, 2021, and consisted of ten episodes. A sixth season was confirmed as part of a
+      long-term deal in May 2018 that ordered 70 new episodes over an unspecified number of seasons,[2] and is set to premiere on
+      September 4, 2022.[3]
+    </p>
+    <p>
+      An animated series on adult-swim about the infinite adventures of Rick, a genius alcoholic and careless scientist, with his
+      grandson Morty, a 14 year-old anxious boy who is not so smart. Together, they explore the infinite universes; causing mayhem
+      and running into trouble.
+    </p>
+    <p><img src="/wallper.jpg" /></p>
   </div>
 </template>
+
+<style scoped>
+.page-wrapper {
+  max-width: 900px;
+  margin: 0 auto;
+}
+.page-wrapper img {
+  max-width: 100%;
+  height: auto;
+}
+.page-wrapper p {
+  line-height: 1.8;
+}
+</style>
