@@ -1,3 +1,8 @@
+<script setup lang="ts">
+import apolloProvider from "@/apollo/apollo.provider";
+provide("apolloProvider", apolloProvider);
+</script>
+
 <template>
   <NuxtLayout>
     <NuxtLoadingIndicator />

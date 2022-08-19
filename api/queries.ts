@@ -25,3 +25,27 @@ export const GET_CHARACTERS = gql`
     }
   }
 `;
+
+export const GET_EPISODES = gql`
+  query ($page: Int = 1) {
+    episodes(page: $page) {
+      info {
+        count
+        pages
+        next
+        prev
+      }
+      results {
+        id
+        name
+        air_date
+        episode
+        created
+        characters {
+          name
+          status
+        }
+      }
+    }
+  }
+`;
