@@ -11,6 +11,8 @@ module.exports = {
   extends: ["@nuxtjs", "plugin:nuxt/recommended", "prettier"],
   plugins: ["prettier"],
   rules: {
+    "no-console": process.env.NODE_ENV === "production" ? "warn" : "off",
+    "no-debugger": process.env.NODE_ENV === "production" ? "warn" : "off",
     "prettier/prettier": ["error"],
     "vue/html-indent": ["error", 2],
     "vue/singleline-html-element-content-newline": 0,

@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import "element-plus/dist/index.css";
-import * as dayjs from "dayjs";
+import dayjs from "dayjs";
 import {
   ElTable,
   ElTableColumn,
@@ -20,10 +20,11 @@ import { GET_CHARACTERS } from "./api/queries";
 
 provide("apolloProvider", apolloProvider);
 
-const { result, loading, error } = useQuery(GET_CHARACTERS);
-const characters = computed(() => result.value?.characters?.results ?? []);
+const currentPage = ref(1);
+const { result, loading, error } = useQuery(GET_CHARACTERS, { page: currentPage });
 
-const currentPage1 = ref(1);
+const characters = computed(() => result.value?.characters.results ?? []);
+const totalRows = computed(() => result.value?.characters.info.count || 0);
 </script>
 
 <template>
@@ -33,7 +34,7 @@ const currentPage1 = ref(1);
       <el-main>
         <h2 style="text-align: center">The Rick and Morty characters as seen on the TV show</h2>
         <ClientOnly>
-          <el-alert v-if="error" :title="error.message" type="error" effect="dark" />
+          <el-alert v-if="error" :title="error.message" type="error" effect="dark" show-icon />
           <template v-else>
             <el-table v-loading="loading" :data="characters" style="width: 100%" height="65vh" stripe border>
               <el-table-column prop="id" label="id" width="50" />
@@ -57,16 +58,17 @@ const currentPage1 = ref(1);
                 <template #default="{ row }">{{ row.location.dimension }}</template>
               </el-table-column>
               <el-table-column prop="type" label="Type">
-                <template #default="{ row }">{{ row.type || "No data" }}</template>
+                <template #default="{ row }">{{ row.type || "Unknown" }}</template>
               </el-table-column>
             </el-table>
             <el-pagination
-              v-model:currentPage="currentPage1"
+              v-if="characters.length"
+              v-model:currentPage="currentPage"
               style="margin-top: 15px; justify-content: center"
               :page-size="20"
               :background="true"
-              layout="prev, pager, next"
-              :total="1000"
+              layout="total, prev, pager, next, jumper"
+              :total="totalRows"
             />
           </template>
         </ClientOnly>
