@@ -7,6 +7,7 @@ import { defineNuxtConfig } from "nuxt";
 const isProduction = process.env.NODE_ENV === "production";
 
 const nuxtConfig = {
+  css: ["element-plus/dist/index.css"],
   target: "static",
   router: {
     base: "/rm/",
