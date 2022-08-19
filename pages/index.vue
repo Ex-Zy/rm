@@ -29,10 +29,6 @@
 </template>
 
 <style scoped>
-.page-wrapper {
-  max-width: 900px;
-  margin: 0 auto;
-}
 .page-wrapper img {
   max-width: 100%;
   height: auto;

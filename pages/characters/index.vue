@@ -31,7 +31,9 @@ const getTagType = (active) => {
           <el-table-column prop="id" label="id" width="50" />
           <el-table-column prop="name" label="Name" width="220">
             <template #default="{ row }">
-              <el-link type="primary">{{ row.name }}</el-link>
+              <NuxtLink :to="`/characters/${row.id}`" style="text-decoration: none">
+                <el-link type="primary">{{ row.name }}</el-link>
+              </NuxtLink>
             </template>
           </el-table-column>
           <el-table-column prop="image" label="Avatar" width="80">

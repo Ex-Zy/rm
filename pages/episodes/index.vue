@@ -49,7 +49,9 @@ const getTagType = (active) => {
           <el-table-column prop="id" label="id" width="50" />
           <el-table-column prop="name" label="Name" width="300">
             <template #default="{ row }">
-              <el-link type="primary">{{ row.name }}</el-link>
+              <NuxtLink :to="`/episodes/${row.id}`" style="text-decoration: none">
+                <el-link type="primary">{{ row.name }}</el-link>
+              </NuxtLink>
             </template>
           </el-table-column>
           <el-table-column prop="air_date" label="Air date" width="200" sortable />
