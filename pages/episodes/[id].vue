@@ -1,23 +1,14 @@
 <script setup lang="ts">
 import dayjs from "dayjs";
-import { ElCard, ElDescriptions, ElDescriptionsItem, ElTag, vLoading } from "element-plus";
+import { getCharacterType } from "@helpers";
+import { ElCard, ElAlert, ElDescriptions, ElDescriptionsItem, ElTag, vLoading } from "element-plus";
 import { useQuery } from "@vue/apollo-composable";
-import { GET_ONE_EPISODE } from "@/api/queries";
+import { GET_ONE_EPISODE } from "@api/queries";
 
 const route = useRoute();
 const { result, loading, error } = useQuery(GET_ONE_EPISODE, { id: route.params.id });
 
 const episode = computed(() => result.value?.episode ?? {});
-
-const getTagType = (active) => {
-  const statuses = {
-    Alive: "success",
-    Dead: "danger",
-    unknown: "warning",
-  };
-
-  return statuses[active];
-};
 </script>
 
 <template>
@@ -39,7 +30,7 @@ const getTagType = (active) => {
         <el-tag
           v-for="character in episode.characters"
           :key="character.id"
-          :type="getTagType(character.status)"
+          :type="getCharacterType(character.status)"
           effect="dark"
           style="margin: 10px 10px 0 0"
         >

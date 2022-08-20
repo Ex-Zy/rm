@@ -1,23 +1,14 @@
 <script setup lang="ts">
 import dayjs from "dayjs";
-import { ElCard, ElAvatar, ElDescriptions, ElDescriptionsItem, ElTag, vLoading } from "element-plus";
+import { getCharacterType } from "@helpers";
+import { ElCard, ElAlert, ElAvatar, ElDescriptions, ElDescriptionsItem, ElTag, vLoading } from "element-plus";
 import { useQuery } from "@vue/apollo-composable";
-import { GET_ONE_CHARACTER } from "@/api/queries";
+import { GET_ONE_CHARACTER } from "@api/queries";
 
 const route = useRoute();
 const { result, loading, error } = useQuery(GET_ONE_CHARACTER, { id: route.params.id });
 
 const character = computed(() => result.value?.character ?? {});
-
-const getTagType = (active) => {
-  const statuses = {
-    Alive: "success",
-    Dead: "danger",
-    unknown: "warning",
-  };
-
-  return statuses[active];
-};
 </script>
 
 <template>
@@ -39,7 +30,7 @@ const getTagType = (active) => {
       <el-descriptions-item label="Created">{{ dayjs(character.created).format("MM/DD/YYYY") }}</el-descriptions-item>
       <el-descriptions-item label="Gender" :span="2">{{ character.gender }}</el-descriptions-item>
       <el-descriptions-item label="Status">
-        <el-tag :type="getTagType(character.status)" effect="dark" size="large">
+        <el-tag :type="getCharacterType(character.status)" effect="dark" size="large">
           {{ character.status }}
         </el-tag>
       </el-descriptions-item>

@@ -1,24 +1,15 @@
 <script lang="ts" setup>
 import dayjs from "dayjs";
+import { getCharacterType } from "@helpers";
 import { ElTable, ElTableColumn, ElAvatar, ElPagination, ElLink, ElAlert, ElTag, vLoading } from "element-plus";
 import { useQuery } from "@vue/apollo-composable";
-import { GET_CHARACTERS } from "@/api/queries";
+import { GET_CHARACTERS } from "@api/queries";
 
 const currentPage = ref(1);
 const { result, loading, error } = useQuery(GET_CHARACTERS, { page: currentPage });
 
 const characters = computed(() => result.value?.characters.results ?? []);
 const totalRows = computed(() => result.value?.characters.info.count || 0);
-
-const getTagType = (active) => {
-  const statuses = {
-    Alive: "success",
-    Dead: "danger",
-    unknown: "warning",
-  };
-
-  return statuses[active];
-};
 </script>
 
 <template>
@@ -48,7 +39,7 @@ const getTagType = (active) => {
           <el-table-column prop="gender" label="Gender" width="100" />
           <el-table-column prop="status" label="Status" width="100" align="center">
             <template #default="{ row }">
-              <el-tag :type="getTagType(row.status)" effect="dark" round size="large">
+              <el-tag :type="getCharacterType(row.status)" effect="dark" round size="large">
                 {{ row.status }}
               </el-tag>
             </template>

@@ -18,12 +18,14 @@ const nuxtConfig = {
   alias: {
     "@": fileURLToPath(new URL("./", import.meta.url)),
     "@api": fileURLToPath(new URL("./api/", import.meta.url)),
+    "@helpers": fileURLToPath(new URL("./helpers/", import.meta.url)),
   },
   typescript: {
     shim: false,
   },
   build: {
     transpile: ["@apollo/client/core", "@vue/apollo-composable", "ts-invariant/process"],
+    extractCSS: true,
   },
 };
 
