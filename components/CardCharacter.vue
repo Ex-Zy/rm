@@ -3,7 +3,7 @@ import dayjs from "dayjs";
 import { getCharacterType } from "@helpers";
 import { ElCard, ElAvatar, ElDescriptions, ElDescriptionsItem, ElTag, vLoading } from "element-plus";
 
-interface Character {
+interface ICharacter {
   id: string | number;
   name: string;
   image: string;
@@ -18,7 +18,7 @@ interface Character {
 }
 
 defineProps<{
-  character: Character;
+  character: ICharacter;
 }>();
 </script>
 

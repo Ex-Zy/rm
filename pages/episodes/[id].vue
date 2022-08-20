@@ -1,7 +1,5 @@
 <script setup lang="ts">
-import dayjs from "dayjs";
-import { getCharacterType } from "@helpers";
-import { ElCard, ElAlert, ElDescriptions, ElDescriptionsItem, ElTag, vLoading } from "element-plus";
+import { ElAlert, vLoading } from "element-plus";
 import { useQuery } from "@vue/apollo-composable";
 import { GET_ONE_EPISODE } from "@api/queries";
 
@@ -13,32 +11,7 @@ const episode = computed(() => result.value?.episode ?? {});
 
 <template>
   <el-alert v-if="error" :title="error.message" type="error" effect="dark" show-icon />
-  <el-card v-else v-loading="loading" class="box-card" style="margin: 40px auto 0">
-    <template #header>
-      <div class="card-header" style="justify-content: center">
-        <span>
-          #{{ route.params.id }}
-          <strong>{{ episode.name }}</strong>
-        </span>
-      </div>
-    </template>
-    <el-descriptions direction="vertical" :column="4" size="large" border>
-      <el-descriptions-item label="Air date">{{ episode.air_date }}</el-descriptions-item>
-      <el-descriptions-item label="Created">{{ dayjs(episode.created).format("MM/DD/YYYY") }}</el-descriptions-item>
-      <el-descriptions-item label="Episode" :span="2">{{ episode.episode }}</el-descriptions-item>
-      <el-descriptions-item label="Characters statuses">
-        <el-tag
-          v-for="character in episode.characters"
-          :key="character.id"
-          :type="getCharacterType(character.status)"
-          effect="dark"
-          style="margin: 10px 10px 0 0"
-        >
-          {{ character.name }}
-        </el-tag>
-      </el-descriptions-item>
-    </el-descriptions>
-  </el-card>
+  <CardEpisode v-else v-loading="loading" :episode="episode" />
 </template>
 
 <style>
