@@ -38,6 +38,7 @@ export const GET_ONE_CHARACTER = gql`
       gender
       created
       location {
+        id
         dimension
         name
         type
