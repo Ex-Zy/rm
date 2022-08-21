@@ -1,12 +1,6 @@
 <script setup lang="ts">
 import { ElAlert, vLoading } from "element-plus";
-import { useQuery } from "@vue/apollo-composable";
-import { GET_ONE_CHARACTER } from "@api/queries";
-
-const route = useRoute();
-const { result, loading, error } = useQuery(GET_ONE_CHARACTER, { id: route.params.id });
-
-const character = computed(() => result.value?.character ?? {});
+const { character, error, loading } = useCharacterDetails();
 </script>
 
 <template>
