@@ -60,7 +60,5 @@ const updatePage = (page: number) => emit("update:page", page);
     layout="total, prev, pager, next, jumper"
     :total="totalRows"
     @current-change="updatePage"
-    @prev-click="updatePage"
-    @next-click="updatePage"
   />
 </template>

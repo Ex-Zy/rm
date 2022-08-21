@@ -256,5 +256,9 @@ module.exports = {
     defineEmits: false,
     defineExpose: false,
     withDefaults: false,
+
+    // composables from "composables" folder
+    useEpisodesList,
+    useCharactersList,
   },
 };
