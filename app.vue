@@ -1,8 +1,6 @@
 <script setup lang="ts">
-import apolloProvider from "@apollo";
+import apolloProvider from "./apollo";
 provide("apolloProvider", apolloProvider);
-
-console.log(apolloProvider, "apolloProvider");
 </script>
 
 <template>

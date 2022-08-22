@@ -16,7 +16,6 @@ const nuxtConfig = {
     "@": fileURLToPath(new URL("./", import.meta.url)),
     "@api": fileURLToPath(new URL("./api/", import.meta.url)),
     "@helpers": fileURLToPath(new URL("./helpers/", import.meta.url)),
-    "@apollo": fileURLToPath(new URL("./apollo/", import.meta.url)),
   },
   typescript: {
     shim: false,

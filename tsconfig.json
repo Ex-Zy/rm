@@ -8,9 +8,8 @@
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
     "paths": {
-      "@helpers": ["./helpers"],
       "@api": ["./api"],
-      "@apollo": ["./apollo"],
+      "@helpers": ["./helpers"]
     }
   },
   "exclude": ["node_modules"]
