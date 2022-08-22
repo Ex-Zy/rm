@@ -11,14 +11,16 @@ const { episodes, loading, error, totalRows, updateEpisodesList } = useEpisodesL
       :title="error.message"
       type="error"
       effect="dark"
-      show-icon
-    />
-    <GridEpisodes
-      v-else
-      :loading="loading"
-      :episodes="episodes"
-      :total-rows="totalRows"
-      @update:page="updateEpisodesList"
-    />
+      show-icon />
+    <ClientOnly v-else>
+      <GridEpisodes
+        :loading="loading"
+        :episodes="episodes"
+        :total-rows="totalRows"
+        @update:page="updateEpisodesList" />
+      <template #fallback>
+        <h3>Loading episodes...</h3>
+      </template>
+    </ClientOnly>
   </div>
 </template>

@@ -24,8 +24,7 @@ const updatePage = (page: number) => emit("update:page", page);
     style="width: 100%"
     height="65vh"
     stripe
-    border
-  >
+    border>
     <ElTableColumn type="expand">
       <template #default="{ row }">
         <div style="padding: 10px">
@@ -35,13 +34,11 @@ const updatePage = (page: number) => emit("update:page", page);
             :key="character.id"
             placement="top-end"
             :content="character.status"
-            effect="dark"
-          >
+            effect="dark">
             <ElTag
               :type="getCharacterType(character.status)"
               effect="dark"
-              style="margin: 10px 10px 0 0"
-            >
+              style="margin: 10px 10px 0 0">
               {{ character.name }}
             </ElTag>
           </ElTooltip>
@@ -51,19 +48,18 @@ const updatePage = (page: number) => emit("update:page", page);
     <ElTableColumn
       prop="id"
       label="id"
-      width="50"
-    />
+      width="50" />
     <ElTableColumn
       prop="name"
       label="Name"
-      width="300"
-    >
+      width="300">
       <template #default="{ row }">
         <NuxtLink
           :to="`/episodes/${row.id}`"
-          style="text-decoration: none"
-        >
-          <ElLink type="primary">{{ row.name }}</ElLink>
+          style="text-decoration: none">
+          <ElLink type="primary">
+            {{ row.name }}
+          </ElLink>
         </NuxtLink>
       </template>
     </ElTableColumn>
@@ -71,20 +67,19 @@ const updatePage = (page: number) => emit("update:page", page);
       prop="air_date"
       label="Air date"
       width="200"
-      sortable
-    />
+      sortable />
     <ElTableColumn
       prop="episode"
       label="Episode"
       width="150"
-      sortable
-    />
+      sortable />
     <ElTableColumn
       prop="created"
       label="Created"
-      sortable
-    >
-      <template #default="{ row }">{{ dayjs(row.created).format("MM/DD/YYYY") }}</template>
+      sortable>
+      <template #default="{ row }">
+        {{ dayjs(row.created).format("MM/DD/YYYY") }}
+      </template>
     </ElTableColumn>
   </ElTable>
   <ElPagination
@@ -95,6 +90,5 @@ const updatePage = (page: number) => emit("update:page", page);
     :background="true"
     layout="total, prev, pager, next, jumper"
     :total="totalRows"
-    @current-change="updatePage"
-  />
+    @current-change="updatePage" />
 </template>

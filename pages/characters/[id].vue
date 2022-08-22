@@ -9,11 +9,13 @@ const { character, error, loading } = useCharacterDetails();
     :title="error.message"
     type="error"
     effect="dark"
-    show-icon
-  />
-  <CardCharacter
-    v-else
-    v-loading="loading"
-    :character="character"
-  />
+    show-icon />
+  <ClientOnly v-else
+    ><CardCharacter
+      v-loading="loading"
+      :character="character" />
+    <template #fallback>
+      <h3>Loading character...</h3>
+    </template>
+  </ClientOnly>
 </template>

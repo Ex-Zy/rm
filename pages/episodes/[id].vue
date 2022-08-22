@@ -9,11 +9,13 @@ const { episode, error, loading } = useEpisodeDetails();
     :title="error.message"
     type="error"
     effect="dark"
-    show-icon
-  />
-  <CardEpisode
-    v-else
-    v-loading="loading"
-    :episode="episode"
-  />
+    show-icon />
+  <ClientOnly v-else>
+    <CardEpisode
+      v-loading="loading"
+      :episode="episode" />
+    <template #fallback>
+      <h3>Loading episode...</h3>
+    </template>
+  </ClientOnly>
 </template>

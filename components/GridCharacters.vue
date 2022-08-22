@@ -24,84 +24,79 @@ const updatePage = (page: number) => emit("update:page", page);
     style="width: 100%"
     height="65vh"
     stripe
-    border
-  >
+    border>
     <ElTableColumn
       prop="id"
       label="id"
-      width="50"
-    />
+      width="50" />
     <ElTableColumn
       prop="name"
       label="Name"
-      width="250"
-    >
+      width="250">
       <template #default="{ row }">
         <NuxtLink
           :to="`/characters/${row.id}`"
-          style="text-decoration: none"
-        >
-          <ElLink type="primary">{{ row.name }}</ElLink>
+          style="text-decoration: none">
+          <ElLink type="primary">
+            {{ row.name }}
+          </ElLink>
         </NuxtLink>
       </template>
     </ElTableColumn>
     <ElTableColumn
       prop="image"
       label="Avatar"
-      width="80"
-    >
+      width="80">
       <template #default="{ row }">
         <ElAvatar
           :size="50"
-          :src="row.image"
-        />
+          :src="row.image" />
       </template>
     </ElTableColumn>
     <ElTableColumn
       prop="species"
       label="Species"
-      width="100"
-    />
+      width="100" />
     <ElTableColumn
       prop="created"
       label="Created"
-      sortable
-    >
-      <template #default="{ row }">{{ dayjs(row.created).format("MM/DD/YYYY") }}</template>
+      sortable>
+      <template #default="{ row }">
+        {{ dayjs(row.created).format("MM/DD/YYYY") }}
+      </template>
     </ElTableColumn>
     <ElTableColumn
       prop="gender"
       label="Gender"
-      width="100"
-    />
+      width="100" />
     <ElTableColumn
       prop="status"
       label="Status"
       width="100"
-      align="center"
-    >
+      align="center">
       <template #default="{ row }">
         <ElTag
           :type="getCharacterType(row.status)"
           effect="dark"
           round
-          size="large"
-        >
+          size="large">
           {{ row.status }}
         </ElTag>
       </template>
     </ElTableColumn>
     <ElTableColumn
       prop="location"
-      label="Location"
-    >
-      <template #default="{ row }">{{ row.location.dimension }}</template>
+      label="Location">
+      <template #default="{ row }">
+        {{ row.location.dimension }}
+      </template>
     </ElTableColumn>
     <ElTableColumn
       prop="type"
-      label="Type"
-    >
-      <template #default="{ row }">{{ row.type || "Unknown" }}</template>
+      label="Type">
+      <template #default="{ row }">
+        {{ row.type || "Unknown" }}
+      </template>
     </ElTableColumn>
   </ElTable>
   <ElPagination
@@ -112,6 +107,5 @@ const updatePage = (page: number) => emit("update:page", page);
     :background="true"
     layout="total, prev, pager, next, jumper"
     :total="totalRows"
-    @current-change="updatePage"
-  />
+    @current-change="updatePage" />
 </template>

@@ -12,14 +12,16 @@ const { characters, loading, error, totalRows, updateCharactersList } = useChara
       :title="error.message"
       type="error"
       effect="dark"
-      show-icon
-    />
-    <GridCharacters
-      v-else
-      :loading="loading"
-      :characters="characters"
-      :total-rows="totalRows"
-      @update:page="updateCharactersList"
-    />
+      show-icon />
+    <ClientOnly v-else>
+      <GridCharacters
+        :loading="loading"
+        :characters="characters"
+        :total-rows="totalRows"
+        @update:page="updateCharactersList" />
+      <template #fallback>
+        <h3>Loading characters...</h3>
+      </template>
+    </ClientOnly>
   </div>
 </template>
