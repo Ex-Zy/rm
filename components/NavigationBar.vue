@@ -18,7 +18,7 @@ const activeLink = computed(() => route?.path ?? "/characters");
         to="/"
         style="text-decoration: none; padding: 0">
         <img
-          src="/logo.svg"
+          src="~/assets/logo.svg"
           width="120"
           height="56"
           style="display: block" />

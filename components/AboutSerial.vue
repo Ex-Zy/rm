@@ -24,7 +24,7 @@
       grandson Morty, a 14 year-old anxious boy who is not so smart. Together, they explore the infinite universes; causing mayhem
       and running into trouble.
     </p>
-    <p><img src="/wallper.jpg" /></p>
+    <p><img src="~/assets/wallper.jpg" /></p>
   </div>
 </template>
 
