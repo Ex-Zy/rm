@@ -19,6 +19,7 @@ const GET_CHARACTERS = gql`
         gender
         created
         location {
+          id
           dimension
         }
       }
@@ -64,6 +65,7 @@ const GET_EPISODES = gql`
         episode
         created
         characters {
+          id
           name
           status
         }
@@ -90,6 +92,7 @@ const GET_ONE_EPISODE = gql`
         gender
         created
         location {
+          id
           dimension
           name
           type
