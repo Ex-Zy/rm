@@ -7,11 +7,14 @@ const activeLink = computed(() => route?.path ?? "/characters");
 <template>
   <ElMenu
     :default-active="activeLink"
+    router
     class="el-menu-demo"
     mode="horizontal">
-    <ElMenuItem style="margin-right: auto">
+    <ElMenuItem
+      index="/"
+      route="/"
+      style="margin-right: auto">
       <NuxtLink
-        index="/"
         to="/"
         style="text-decoration: none; padding: 0">
         <img
@@ -22,6 +25,7 @@ const activeLink = computed(() => route?.path ?? "/characters");
       </NuxtLink>
     </ElMenuItem>
     <ElMenuItem
+      :class="{ 'is-active': activeLink.includes('characters') }"
       index="/characters"
       route="/characters">
       <NuxtLink
@@ -31,6 +35,7 @@ const activeLink = computed(() => route?.path ?? "/characters");
       >
     </ElMenuItem>
     <ElMenuItem
+      :class="{ 'is-active': activeLink.includes('episodes') }"
       index="/episodes"
       route="/episodes">
       <NuxtLink
