@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import dayjs from "dayjs";
 import { getCharacterType } from "@helpers";
-import { ElCard, ElDescriptions, ElDescriptionsItem, ElTag, vLoading } from "element-plus";
+import { ElCard, ElDescriptions, ElDescriptionsItem, ElTag } from "element-plus";
 
 interface IEpisode {
   id: string | number;
@@ -19,21 +19,36 @@ defineProps<{
 </script>
 
 <template>
-  <el-card class="box-card" style="margin: 40px auto 0">
+  <ElCard
+    class="box-card"
+    style="margin: 40px auto 0"
+  >
     <template #header>
-      <div class="card-header" style="justify-content: center">
+      <div
+        class="card-header"
+        style="justify-content: center"
+      >
         <span>
           #{{ episode.id }}
           <strong>{{ episode.name }}</strong>
         </span>
       </div>
     </template>
-    <el-descriptions direction="vertical" :column="4" size="large" border>
-      <el-descriptions-item label="Air date">{{ episode.air_date }}</el-descriptions-item>
-      <el-descriptions-item label="Created">{{ dayjs(episode.created).format("MM/DD/YYYY") }}</el-descriptions-item>
-      <el-descriptions-item label="Episode" :span="2">{{ episode.episode }}</el-descriptions-item>
-      <el-descriptions-item label="Characters statuses">
-        <el-tag
+    <ElDescriptions
+      direction="vertical"
+      :column="4"
+      size="large"
+      border
+    >
+      <ElDescriptionsItem label="Air date">{{ episode.air_date }}</ElDescriptionsItem>
+      <ElDescriptionsItem label="Created">{{ dayjs(episode.created).format("MM/DD/YYYY") }}</ElDescriptionsItem>
+      <ElDescriptionsItem
+        label="Episode"
+        :span="2"
+        >{{ episode.episode }}</ElDescriptionsItem
+      >
+      <ElDescriptionsItem label="Characters statuses">
+        <ElTag
           v-for="character in episode.characters"
           :key="character.id"
           :type="getCharacterType(character.status)"
@@ -41,10 +56,10 @@ defineProps<{
           style="margin: 10px 10px 0 0"
         >
           {{ character.name }}
-        </el-tag>
-      </el-descriptions-item>
-    </el-descriptions>
-  </el-card>
+        </ElTag>
+      </ElDescriptionsItem>
+    </ElDescriptions>
+  </ElCard>
 </template>
 
 <style>

@@ -18,40 +18,93 @@ const updatePage = (page: number) => emit("update:page", page);
 </script>
 
 <template>
-  <el-table v-loading="loading" :data="characters" style="width: 100%" height="65vh" stripe border>
-    <el-table-column prop="id" label="id" width="50" />
-    <el-table-column prop="name" label="Name" width="250">
+  <ElTable
+    v-loading="loading"
+    :data="characters"
+    style="width: 100%"
+    height="65vh"
+    stripe
+    border
+  >
+    <ElTableColumn
+      prop="id"
+      label="id"
+      width="50"
+    />
+    <ElTableColumn
+      prop="name"
+      label="Name"
+      width="250"
+    >
       <template #default="{ row }">
-        <NuxtLink :to="`/characters/${row.id}`" style="text-decoration: none">
-          <el-link type="primary">{{ row.name }}</el-link>
+        <NuxtLink
+          :to="`/characters/${row.id}`"
+          style="text-decoration: none"
+        >
+          <ElLink type="primary">{{ row.name }}</ElLink>
         </NuxtLink>
       </template>
-    </el-table-column>
-    <el-table-column prop="image" label="Avatar" width="80">
+    </ElTableColumn>
+    <ElTableColumn
+      prop="image"
+      label="Avatar"
+      width="80"
+    >
       <template #default="{ row }">
-        <el-avatar :size="50" :src="row.image" />
+        <ElAvatar
+          :size="50"
+          :src="row.image"
+        />
       </template>
-    </el-table-column>
-    <el-table-column prop="species" label="Species" width="100" />
-    <el-table-column prop="created" label="Created" sortable>
+    </ElTableColumn>
+    <ElTableColumn
+      prop="species"
+      label="Species"
+      width="100"
+    />
+    <ElTableColumn
+      prop="created"
+      label="Created"
+      sortable
+    >
       <template #default="{ row }">{{ dayjs(row.created).format("MM/DD/YYYY") }}</template>
-    </el-table-column>
-    <el-table-column prop="gender" label="Gender" width="100" />
-    <el-table-column prop="status" label="Status" width="100" align="center">
+    </ElTableColumn>
+    <ElTableColumn
+      prop="gender"
+      label="Gender"
+      width="100"
+    />
+    <ElTableColumn
+      prop="status"
+      label="Status"
+      width="100"
+      align="center"
+    >
       <template #default="{ row }">
-        <el-tag :type="getCharacterType(row.status)" effect="dark" round size="large">
+        <ElTag
+          :type="getCharacterType(row.status)"
+          effect="dark"
+          round
+          size="large"
+        >
           {{ row.status }}
-        </el-tag>
+        </ElTag>
       </template>
-    </el-table-column>
-    <el-table-column prop="location" label="Location">
+    </ElTableColumn>
+    <ElTableColumn
+      prop="location"
+      label="Location"
+    >
       <template #default="{ row }">{{ row.location.dimension }}</template>
-    </el-table-column>
-    <el-table-column prop="type" label="Type">
+    </ElTableColumn>
+    <ElTableColumn
+      prop="type"
+      label="Type"
+    >
       <template #default="{ row }">{{ row.type || "Unknown" }}</template>
-    </el-table-column>
-  </el-table>
-  <el-pagination
+    </ElTableColumn>
+  </ElTable>
+  <ElPagination
     v-if="characters.length"
     v-model:currentPage="currentPage"
     style="margin-top: 15px; justify-content: center"

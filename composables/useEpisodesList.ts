@@ -1,5 +1,5 @@
 import { useQuery } from "@vue/apollo-composable";
-import { GET_EPISODES } from "@api/queries";
+import { GET_EPISODES } from "@api";
 
 const useEpisodesList = () => {
   const page = ref(1);

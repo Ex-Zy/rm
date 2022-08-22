@@ -10,6 +10,8 @@
     "paths": {
       "@helpers": ["./helpers"],
       "@api": ["./api"],
+      "@apollo": ["./apollo"],
     }
-  }
+  },
+  "exclude": ["node_modules"]
 }

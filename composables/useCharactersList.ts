@@ -1,5 +1,5 @@
 import { useQuery } from "@vue/apollo-composable";
-import { GET_CHARACTERS } from "@api/queries";
+import { GET_CHARACTERS } from "@api";
 
 const useCharactersList = () => {
   const page = ref(1);

@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import dayjs from "dayjs";
 import { getCharacterType } from "@helpers";
-import { ElCard, ElAvatar, ElDescriptions, ElDescriptionsItem, ElTag, vLoading } from "element-plus";
+import { ElCard, ElAvatar, ElDescriptions, ElDescriptionsItem, ElTag } from "element-plus";
 
 interface ICharacter {
   id: string | number;
@@ -23,9 +23,15 @@ defineProps<{
 </script>
 
 <template>
-  <el-card class="box-card" style="margin: 40px auto 0">
+  <ElCard
+    class="box-card"
+    style="margin: 40px auto 0"
+  >
     <template #header>
-      <div class="card-header" style="justify-content: center">
+      <div
+        class="card-header"
+        style="justify-content: center"
+      >
         <span>
           #{{ character.id }}
           <strong>{{ character.name }}</strong>
@@ -33,20 +39,37 @@ defineProps<{
       </div>
     </template>
     <div style="display: flex; justify-content: center; margin-bottom: 20px">
-      <el-avatar shape="square" :size="300" :src="character.image" />
+      <ElAvatar
+        shape="square"
+        :size="300"
+        :src="character.image"
+      />
     </div>
-    <el-descriptions direction="vertical" :column="4" size="large" border>
-      <el-descriptions-item label="Species">{{ character.species }}</el-descriptions-item>
-      <el-descriptions-item label="Created">{{ dayjs(character.created).format("MM/DD/YYYY") }}</el-descriptions-item>
-      <el-descriptions-item label="Gender" :span="2">{{ character.gender }}</el-descriptions-item>
-      <el-descriptions-item label="Status">
-        <el-tag :type="getCharacterType(character.status)" effect="dark" size="large">
+    <ElDescriptions
+      direction="vertical"
+      :column="4"
+      size="large"
+      border
+    >
+      <ElDescriptionsItem label="Species">{{ character.species }}</ElDescriptionsItem>
+      <ElDescriptionsItem label="Created">{{ dayjs(character.created).format("MM/DD/YYYY") }}</ElDescriptionsItem>
+      <ElDescriptionsItem
+        label="Gender"
+        :span="2"
+        >{{ character.gender }}</ElDescriptionsItem
+      >
+      <ElDescriptionsItem label="Status">
+        <ElTag
+          :type="getCharacterType(character.status)"
+          effect="dark"
+          size="large"
+        >
           {{ character.status }}
-        </el-tag>
-      </el-descriptions-item>
-      <el-descriptions-item label="Location"> {{ character.location?.type }} / {{ character.location?.name }} </el-descriptions-item>
-    </el-descriptions>
-  </el-card>
+        </ElTag>
+      </ElDescriptionsItem>
+      <ElDescriptionsItem label="Location"> {{ character.location?.type }} / {{ character.location?.name }} </ElDescriptionsItem>
+    </ElDescriptions>
+  </ElCard>
 </template>
 
 <style>

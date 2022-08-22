@@ -4,6 +4,16 @@ const { episode, error, loading } = useEpisodeDetails();
 </script>
 
 <template>
-  <el-alert v-if="error" :title="error.message" type="error" effect="dark" show-icon />
-  <CardEpisode v-else v-loading="loading" :episode="episode" />
+  <ElAlert
+    v-if="error"
+    :title="error.message"
+    type="error"
+    effect="dark"
+    show-icon
+  />
+  <CardEpisode
+    v-else
+    v-loading="loading"
+    :episode="episode"
+  />
 </template>

@@ -1,8 +1,5 @@
 import { fileURLToPath } from "node:url";
 import { defineNuxtConfig } from "nuxt";
-// import AutoImport from "unplugin-auto-import/vite";
-// import Components from "unplugin-vue-components/vite";
-// import { ElementPlusResolver } from "unplugin-vue-components/resolvers";
 
 const isProduction = process.env.NODE_ENV === "production";
 
@@ -19,6 +16,7 @@ const nuxtConfig = {
     "@": fileURLToPath(new URL("./", import.meta.url)),
     "@api": fileURLToPath(new URL("./api/", import.meta.url)),
     "@helpers": fileURLToPath(new URL("./helpers/", import.meta.url)),
+    "@apollo": fileURLToPath(new URL("./apollo/", import.meta.url)),
   },
   typescript: {
     shim: false,

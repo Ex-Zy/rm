@@ -5,17 +5,20 @@
     "dev": "nuxt dev",
     "generate": "nuxt generate && touch dist/.nojekyll",
     "preview": "nuxt preview",
-    "deploy": "push-dir --dir=dist --branch=gh-pages --cleanup"
+    "deploy": "push-dir --dir=dist --branch=gh-pages --cleanup",
+    "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix"
   },
   "devDependencies": {
-    "@babel/eslint-parser": "^7.15.0",
-    "@nuxtjs/eslint-config": "^6.0.1",
-    "@nuxtjs/eslint-module": "^3.0.2",
-    "eslint": "^7.32.0",
-    "eslint-config-prettier": "^8.3.0",
-    "eslint-plugin-nuxt": "^2.0.0",
-    "eslint-plugin-prettier": "^3.4.0",
-    "eslint-plugin-vue": "^7.15.1",
+    "@rushstack/eslint-patch": "^1.1.4",
+    "@typescript-eslint/eslint-plugin": "^5.33.1",
+    "@typescript-eslint/parser": "^5.33.1",
+    "@vue/eslint-config-standard": "^8.0.1",
+    "eslint": "^8.22.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-nuxt": "^3.2.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "eslint-plugin-unused-imports": "^2.0.0",
+    "eslint-plugin-vue": "^9.3.0",
     "nuxt": "3.0.0-rc.6",
     "prettier": "^2.3.2",
     "push-dir": "^0.4.1"
@@ -25,8 +28,9 @@
     "@vue/apollo-composable": "^4.0.0-alpha.19",
     "dayjs": "^1.11.5",
     "element-plus": "^2.2.12",
-    "graphql": "^16.5.0",
-    "graphql-tag": "^2.12.6"
+    "graphql": "^16.6.0",
+    "graphql-tag": "^2.12.6",
+    "typescript": "^4.7.4"
   },
   "engines": {
     "node": ">=16.0.0",
