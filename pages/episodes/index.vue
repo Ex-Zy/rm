@@ -1,11 +1,16 @@
 <script lang="ts" setup>
-import { ElAlert } from "element-plus";
+import { ElAlert, ElSkeleton } from "element-plus";
 const { episodes, loading, error, totalRows, updateEpisodesList } = useEpisodesList();
 </script>
 
 <template>
   <div class="page-wrapper">
-    <FilterBar />
+    <ClientOnly>
+      <FilterBarEpisodes />
+      <template #fallback>
+        <ElSkeleton :rows="1" />
+      </template>
+    </ClientOnly>
     <h2 style="text-align: center">List of Rick and Morty episodes</h2>
     <ElAlert
       v-if="error"
@@ -20,7 +25,7 @@ const { episodes, loading, error, totalRows, updateEpisodesList } = useEpisodesL
         :total-rows="totalRows"
         @update:page="updateEpisodesList" />
       <template #fallback>
-        <h3>Loading episodes...</h3>
+        <ElSkeleton :rows="12" />
       </template>
     </ClientOnly>
   </div>

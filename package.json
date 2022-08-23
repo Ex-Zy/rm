@@ -21,7 +21,8 @@
     "eslint-plugin-vue": "^9.3.0",
     "nuxt": "3.0.0-rc.6",
     "prettier": "^2.3.2",
-    "push-dir": "^0.4.1"
+    "push-dir": "^0.4.1",
+    "sass": "^1.54.5"
   },
   "dependencies": {
     "@apollo/client": "^3.6.9",

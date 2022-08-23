@@ -1,11 +1,16 @@
 <script lang="ts" setup>
-import { ElAlert } from "element-plus";
+import { ElAlert, ElSkeleton } from "element-plus";
 const { characters, loading, error, totalRows, updateCharactersList } = useCharactersList();
 </script>
 
 <template>
   <div class="page-wrapper">
-    <FilterBar />
+    <ClientOnly>
+      <FilterBarCharacters />
+      <template #fallback>
+        <ElSkeleton :rows="1" />
+      </template>
+    </ClientOnly>
     <h2 style="text-align: center">The Rick and Morty characters as seen on the TV show</h2>
     <ElAlert
       v-if="error"
@@ -20,7 +25,7 @@ const { characters, loading, error, totalRows, updateCharactersList } = useChara
         :total-rows="totalRows"
         @update:page="updateCharactersList" />
       <template #fallback>
-        <h3>Loading characters...</h3>
+        <ElSkeleton :rows="12" />
       </template>
     </ClientOnly>
   </div>
