@@ -1,11 +1,11 @@
 <script lang="ts" setup>
 import { ElAlert } from "element-plus";
-
 const { characters, loading, error, totalRows, updateCharactersList } = useCharactersList();
 </script>
 
 <template>
   <div class="page-wrapper">
+    <FilterBar />
     <h2 style="text-align: center">The Rick and Morty characters as seen on the TV show</h2>
     <ElAlert
       v-if="error"

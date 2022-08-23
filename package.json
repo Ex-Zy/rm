@@ -25,6 +25,7 @@
   },
   "dependencies": {
     "@apollo/client": "^3.6.9",
+    "@formkit/nuxt": "^1.0.0-beta.10",
     "@vue/apollo-composable": "^4.0.0-alpha.19",
     "dayjs": "^1.11.5",
     "element-plus": "^2.2.12",

@@ -5,6 +5,7 @@ const { episodes, loading, error, totalRows, updateEpisodesList } = useEpisodesL
 
 <template>
   <div class="page-wrapper">
+    <FilterBar />
     <h2 style="text-align: center">List of Rick and Morty episodes</h2>
     <ElAlert
       v-if="error"

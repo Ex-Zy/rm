@@ -4,7 +4,8 @@ import { defineNuxtConfig } from "nuxt";
 const isProduction = process.env.NODE_ENV === "production";
 
 const nuxtConfig = {
-  css: ["element-plus/dist/index.css"],
+  modules: ["@formkit/nuxt"],
+  css: ["element-plus/dist/index.css", "@formkit/themes/genesis"],
   target: "static",
   router: {
     base: "/rm/",
