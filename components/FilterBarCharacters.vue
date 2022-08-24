@@ -1,33 +1,61 @@
-<script lang="ts" setup></script>
+<script lang="ts" setup>
+import { FilterCharacter } from "types/filter.character";
+
+const props = defineProps<{
+  filter: FilterCharacter;
+}>();
+const emits = defineEmits<{
+  (e: "update:filter", filter: FilterCharacter): void;
+}>();
+
+const localFilter = ref({
+  name: "",
+  status: "",
+  species: "",
+  type: "",
+  gender: "",
+});
+
+watch(props.filter, (filter: FilterCharacter) => (localFilter.value = filter));
+const handleSumbitFilter = () => emits("update:filter", localFilter.value);
+</script>
 
 <template>
   <div class="filter-bar">
     <FormKit
+      v-model="localFilter.name"
       label="Name"
       placeholder="Rick Sanchez"
       name="name" />
     <FormKit
+      v-model="localFilter.species"
       label="Species"
       placeholder="Human"
       name="species" />
     <FormKit
+      v-model="localFilter.status"
       type="select"
       label="Status"
+      placeholder="Alive"
       name="status"
       :options="['alive', 'dead', 'unknown']" />
     <FormKit
+      v-model="localFilter.gender"
       type="select"
       label="Gender"
       name="gender"
+      placeholder="male"
       :options="['male', 'female', 'genderless', 'unknown']" />
     <FormKit
+      v-model="localFilter.type"
       label="Type"
       placeholder="Unknown"
       name="type" />
     <FormKit
       style="width: 100%"
       type="button"
-      label="Search" />
+      label="Search"
+      @click="handleSumbitFilter" />
   </div>
 </template>
 
@@ -45,6 +73,12 @@
   }
   &:deep(.formkit-input) {
     margin-right: 0;
+    &::placeholder {
+      color: darken(#fff, 20%);
+    }
+    &[data-placeholder="true"] {
+      color: darken(#fff, 20%);
+    }
   }
   &:deep(.formkit-outer) {
     margin: 0;

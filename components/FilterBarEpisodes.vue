@@ -1,18 +1,38 @@
-<script lang="ts" setup></script>
+<script lang="ts" setup>
+import { FilterEpisode } from "types/filter.episode";
+
+const props = defineProps<{
+  filter: FilterEpisode;
+}>();
+const emits = defineEmits<{
+  (e: "update:filter", filter: FilterEpisode): void;
+}>();
+
+const localFilter = ref({
+  name: "",
+  episode: "",
+});
+
+watch(props.filter, (filter: FilterEpisode) => (localFilter.value = filter));
+const handleSumbitFilter = () => emits("update:filter", localFilter.value);
+</script>
 
 <template>
   <div class="filter-bar">
     <FormKit
+      v-model="localFilter.name"
       label="Name"
       placeholder="Rick Sanchez"
       name="name" />
     <FormKit
-      label="Episodes"
+      v-model="localFilter.episode"
+      label="Episode"
       placeholder="S01E02"
-      name="episodes" />
+      name="episode" />
     <FormKit
       type="button"
-      label="Search" />
+      label="Search"
+      @click="handleSumbitFilter" />
   </div>
 </template>
 
@@ -27,6 +47,12 @@
   }
   &:deep(.formkit-input) {
     margin-right: 0;
+    &::placeholder {
+      color: darken(#fff, 20%);
+    }
+    &[data-placeholder="true"] {
+      color: darken(#fff, 20%);
+    }
   }
   &:deep(.formkit-outer) {
     margin: 0;

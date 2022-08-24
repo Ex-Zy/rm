@@ -1,12 +1,18 @@
 <script lang="ts" setup>
 import { ElAlert, ElSkeleton } from "element-plus";
+
 const { episodes, loading, error, totalRows, updateEpisodesList } = useEpisodesList();
+
+const filter = ref({
+  name: "",
+  episode: "",
+});
 </script>
 
 <template>
   <div class="page-wrapper">
     <ClientOnly>
-      <FilterBarEpisodes />
+      <FilterBarEpisodes v-model:filter="filter" />
       <template #fallback>
         <ElSkeleton :rows="1" />
       </template>

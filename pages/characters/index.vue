@@ -1,12 +1,21 @@
 <script lang="ts" setup>
 import { ElAlert, ElSkeleton } from "element-plus";
+
 const { characters, loading, error, totalRows, updateCharactersList } = useCharactersList();
+
+const filter = ref({
+  name: "",
+  status: "",
+  species: "",
+  type: "",
+  gender: "",
+});
 </script>
 
 <template>
   <div class="page-wrapper">
     <ClientOnly>
-      <FilterBarCharacters />
+      <FilterBarCharacters v-model:filter="filter" />
       <template #fallback>
         <ElSkeleton :rows="1" />
       </template>
