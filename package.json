@@ -3,9 +3,8 @@
   "scripts": {
     "build": "nuxt build",
     "dev": "nuxt dev",
-    "generate": "nuxt generate && touch dist/.nojekyll",
+    "generate": "nuxt generate",
     "preview": "nuxt preview",
-    "deploy": "push-dir --dir=dist --branch=gh-pages --cleanup",
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix"
   },
   "devDependencies": {
@@ -21,7 +20,6 @@
     "eslint-plugin-vue": "^9.3.0",
     "nuxt": "3.0.0-rc.6",
     "prettier": "^2.3.2",
-    "push-dir": "^0.4.1",
     "sass": "^1.54.5"
   },
   "dependencies": {
