@@ -13,8 +13,9 @@ const localFilter = ref({
   episode: "",
 });
 
-watch(props.filter, (filter: FilterEpisode) => (localFilter.value = filter));
-const handleSumbitFilter = () => emits("update:filter", localFilter.value);
+const updateLocalFilter = (propsFilter) => (Object.keys(propsFilter).length ? (localFilter.value = propsFilter) : null);
+watch(() => ({ ...props.filter }), updateLocalFilter, { immediate: true });
+const handleSumbitFilter = () => emits("update:filter", { ...localFilter.value });
 </script>
 
 <template>

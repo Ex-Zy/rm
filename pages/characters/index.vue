@@ -14,7 +14,6 @@ const query: QueryCharacters = reactive({
 });
 const { characters, loading, error, totalRows, updateCharactersList } = useCharactersList(query);
 const updatePageQuery = (params: QueryCharacters) => {
-  console.log(params, "updatePageQuery");
   query.page = params.page;
   query.filter = params.filter;
 };

@@ -2,17 +2,20 @@
 import dayjs from "dayjs";
 import { getCharacterType } from "@helpers";
 import { ElTable, ElTableColumn, ElTooltip, ElPagination, ElLink, ElTag, vLoading } from "element-plus";
+import { Episode } from "types/episode";
 
-const currentPage = ref(1);
-
-defineProps<{
+const props = defineProps<{
+  page: number;
   loading: boolean;
   totalRows: number;
-  episodes: Object[];
+  episodes: Episode[];
 }>();
 const emit = defineEmits<{
   (e: "update:page", page: number | string): void;
 }>();
+
+const currentPage = ref(1);
+watchEffect(() => (currentPage.value = props.page));
 
 const updatePage = (page: number) => emit("update:page", page);
 </script>

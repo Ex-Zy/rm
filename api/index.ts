@@ -50,8 +50,8 @@ const GET_ONE_CHARACTER = gql`
 `;
 
 const GET_EPISODES = gql`
-  query ($page: Int = 1) {
-    episodes(page: $page) {
+  query ($page: Int = 1, $filter: FilterEpisode) {
+    episodes(page: $page, filter: $filter) {
       info {
         count
         pages
