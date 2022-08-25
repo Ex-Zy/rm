@@ -28,7 +28,7 @@ const nuxtConfig = {
 };
 
 if (isProduction) {
-  nuxtConfig.build.transpile.push(...["dayjs", "element-plus", "@formkit/nuxt"]);
+  nuxtConfig.build.transpile.push(...["dayjs", "element-plus"]);
 }
 
 export default defineNuxtConfig(nuxtConfig);
