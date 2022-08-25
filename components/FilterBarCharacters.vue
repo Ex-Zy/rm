@@ -16,8 +16,11 @@ const localFilter = ref({
   gender: "",
 });
 
-watch(props.filter, (filter: FilterCharacter) => (localFilter.value = filter));
-const handleSumbitFilter = () => emits("update:filter", localFilter.value);
+const updateLocalFilter = (propsFilter) => (Object.keys(propsFilter).length ? (localFilter.value = propsFilter) : null);
+
+watch(() => ({ ...props.filter }), updateLocalFilter, { immediate: true });
+
+const handleSumbitFilter = () => emits("update:filter", { ...localFilter.value });
 </script>
 
 <template>
