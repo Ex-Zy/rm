@@ -3,7 +3,7 @@ import { defineNuxtConfig } from "nuxt";
 
 const isProduction = process.env.NODE_ENV === "production";
 
-const nuxtConfig = {
+export default defineNuxtConfig({
   modules: ["@formkit/nuxt"],
   css: ["element-plus/dist/index.css", "@formkit/themes/genesis"],
   target: "static",
@@ -22,13 +22,13 @@ const nuxtConfig = {
     shim: false,
   },
   build: {
-    transpile: ["@apollo/client/core", "@vue/apollo-composable", "ts-invariant/process"],
+    transpile: [
+      "@apollo/client/core",
+      "@vue/apollo-composable",
+      "ts-invariant/process",
+      "dayjs",
+      ...(isProduction ? ["element-plus"] : []),
+    ],
     extractCSS: true,
   },
-};
-
-if (isProduction) {
-  nuxtConfig.build.transpile.push(...["dayjs", "element-plus"]);
-}
-
-export default defineNuxtConfig(nuxtConfig);
+});
