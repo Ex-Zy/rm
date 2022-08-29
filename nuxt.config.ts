@@ -1,6 +1,8 @@
 import { fileURLToPath } from "node:url";
 import { defineNuxtConfig } from "nuxt";
 
+const resolveUrl = (path) => fileURLToPath(new URL(path, import.meta.url));
+
 const isProduction = process.env.NODE_ENV === "production";
 
 export default defineNuxtConfig({
@@ -14,9 +16,9 @@ export default defineNuxtConfig({
     baseURL: isProduction ? "/rm/" : "/",
   },
   alias: {
-    "@": fileURLToPath(new URL("./", import.meta.url)),
-    "@api": fileURLToPath(new URL("./api/", import.meta.url)),
-    "@helpers": fileURLToPath(new URL("./helpers/", import.meta.url)),
+    "@": resolveUrl("./"),
+    "@api": resolveUrl("./api/"),
+    "@helpers": resolveUrl("./helpers/"),
   },
   typescript: {
     shim: false,
