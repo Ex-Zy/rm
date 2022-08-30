@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { FilterEpisode } from "types/filter.episode";
+import { FilterEpisode } from "types/filter/filter.episode";
 
 const props = defineProps<{
   filter: FilterEpisode;

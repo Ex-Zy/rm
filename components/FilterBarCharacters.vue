@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { FilterCharacter } from "types/filter.character";
+import { FilterCharacter } from "types/filter/filter.character";
 
 const props = defineProps<{
   filter: FilterCharacter;

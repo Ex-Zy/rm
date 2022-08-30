@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { ElAlert, ElSkeleton } from "element-plus";
-import { QueryCharacters } from "types/query.characters";
+import { QueryCharacters } from "types/query/query.characters";
 
 const query: QueryCharacters = reactive({
   page: 1,

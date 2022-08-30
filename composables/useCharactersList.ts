@@ -1,6 +1,6 @@
 import { useQuery } from "@vue/apollo-composable";
-import { GET_CHARACTERS } from "@api";
-import { QueryCharacters } from "types/query.characters";
+import { GET_CHARACTERS } from "../api";
+import { QueryCharacters } from "types/query/query.characters";
 
 const useCharactersList = (query: QueryCharacters) => {
   const variables = reactive({ ...query, ...(query.filter && { filter: { ...query.filter } }) });

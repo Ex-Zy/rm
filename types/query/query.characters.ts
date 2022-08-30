@@ -1,4 +1,4 @@
-import { FilterCharacter } from "./filter.character";
+import { FilterCharacter } from "../filter/filter.character";
 
 export type QueryCharacters = {
   page: number;

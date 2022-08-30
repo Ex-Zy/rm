@@ -2,7 +2,7 @@
 import dayjs from "dayjs";
 import { getCharacterType } from "@helpers";
 import { ElTable, ElTableColumn, ElTooltip, ElPagination, ElLink, ElTag, vLoading } from "element-plus";
-import { Episode } from "types/episode";
+import { Episode } from "types/entity/entity.episode";
 
 const props = defineProps<{
   page: number;

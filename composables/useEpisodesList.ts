@@ -1,6 +1,6 @@
 import { useQuery } from "@vue/apollo-composable";
-import { GET_EPISODES } from "@api";
-import { QueryEpisodes } from "types/query.episodes";
+import { GET_EPISODES } from "../api";
+import { QueryEpisodes } from "types/query/query.episodes";
 
 const useEpisodesList = (query: QueryEpisodes) => {
   const variables = reactive({ ...query, ...(query.filter && { filter: { ...query.filter } }) });

@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { ElAlert, ElSkeleton } from "element-plus";
-import { QueryEpisodes } from "types/query.episodes";
+import { QueryEpisodes } from "types/query/query.episodes";
 
 const query: QueryEpisodes = reactive({
   page: 1,
