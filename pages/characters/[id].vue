@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ElAlert, vLoading } from "element-plus";
+import { ElAlert, vLoading, ElSkeleton } from "element-plus";
 const { character, error, loading } = useCharacterDetails();
 </script>
 
@@ -16,7 +16,10 @@ const { character, error, loading } = useCharacterDetails();
         v-loading="loading"
         :character="character" />
       <template #fallback>
-        <h3>Loading character...</h3>
+        <ElSkeleton
+          animated
+          :rows="14"
+          style="max-width: 480px; margin: 60px auto 0" />
       </template>
     </ClientOnly>
   </div>

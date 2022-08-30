@@ -27,7 +27,9 @@ const updatePage = (params: QueryEpisodes) => {
         :filter="query.filter"
         @update:filter="(filter) => updatePage({ filter, page: 1 })" />
       <template #fallback>
-        <ElSkeleton :rows="1" />
+        <ElSkeleton
+          :rows="1"
+          animated />
       </template>
     </ClientOnly>
     <h2 style="text-align: center">List of Rick and Morty episodes</h2>
@@ -45,7 +47,9 @@ const updatePage = (params: QueryEpisodes) => {
         :total-rows="totalRows"
         @update:page="(page) => updatePage({ page, filter: { ...query.filter } })" />
       <template #fallback>
-        <ElSkeleton :rows="12" />
+        <ElSkeleton
+          :rows="12"
+          animated />
       </template>
     </ClientOnly>
   </div>

@@ -2,6 +2,7 @@
 import dayjs from "dayjs";
 import { getCharacterType } from "@helpers";
 import { ElCard, ElDescriptions, ElDescriptionsItem, ElTag } from "element-plus";
+import { Character } from "types/entity/entity.character";
 
 interface IEpisode {
   id: string | number;
@@ -10,7 +11,7 @@ interface IEpisode {
   species: string;
   created: string;
   episode: string;
-  characters: Object[];
+  characters: Character[];
 }
 
 defineProps<{
