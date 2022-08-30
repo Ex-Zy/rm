@@ -1,11 +1,12 @@
 <script lang="ts" setup>
 import { ElMenu, ElMenuItem } from "element-plus";
 const route = useRoute();
-const activeLink = computed(() => route?.path ?? "/characters");
+const activeLink = computed(() => route?.path ?? "/");
 </script>
 
 <template>
   <ElMenu
+    :ellipsis="false"
     :default-active="activeLink"
     router
     class="el-menu-demo"
@@ -13,7 +14,7 @@ const activeLink = computed(() => route?.path ?? "/characters");
     <ElMenuItem
       index="/"
       route="/"
-      style="margin-right: auto">
+      style="margin-right: auto; padding: 0; background-color: transparent">
       <NuxtLink
         to="/"
         style="text-decoration: none; padding: 0">
