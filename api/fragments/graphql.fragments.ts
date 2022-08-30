@@ -9,27 +9,37 @@ export const INFO_FRAGMENT = gql`
   }
 `;
 
+export const LOCATION_FRAGMENT = gql`
+  fragment LocationFields on Location {
+    id
+    dimension
+    name
+    type
+    created
+  }
+`;
+
 export const CHARACTER_FRAGMENT = gql`
+  ${LOCATION_FRAGMENT}
+
   fragment CharacterFields on Character {
     id
     name
-    image
     status
     species
     type
     gender
+    image
     created
     location {
-      id
-      dimension
-      name
-      type
-      created
+      ...LocationFields
     }
   }
 `;
 
 export const EPISODE_FRAGMENT = gql`
+  ${CHARACTER_FRAGMENT}
+
   fragment EpisodeFields on Episode {
     id
     name
@@ -37,21 +47,7 @@ export const EPISODE_FRAGMENT = gql`
     episode
     created
     characters {
-      id
-      name
-      image
-      status
-      species
-      type
-      gender
-      created
-      location {
-        id
-        dimension
-        name
-        type
-        created
-      }
+      ...CharacterFields
     }
   }
 `;
