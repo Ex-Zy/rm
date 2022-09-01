@@ -7,7 +7,7 @@ import { ElContainer, ElMain, ElFooter, ElHeader } from "element-plus";
     <ElHeader>
       <NavigationBar />
     </ElHeader>
-    <ElMain>
+    <ElMain style="display: flex; flex-direction: column; overflow: hidden">
       <slot />
     </ElMain>
     <ElFooter style="text-align: center">

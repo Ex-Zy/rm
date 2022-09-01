@@ -24,8 +24,7 @@ const updatePage = (page: number) => emit("update:page", page);
   <ElTable
     v-loading="loading"
     :data="episodes"
-    style="width: 100%"
-    height="65vh"
+    style="width: 100%; flex-grow: 1; margin-bottom: 15px; height: 100px"
     stripe
     border>
     <ElTableColumn type="expand">
@@ -88,7 +87,7 @@ const updatePage = (page: number) => emit("update:page", page);
   <ElPagination
     v-if="episodes.length"
     v-model:currentPage="currentPage"
-    style="margin-top: 15px; justify-content: center"
+    style="margin-top: auto; justify-content: center; flex-shrink: 0"
     :page-size="20"
     :background="true"
     layout="total, prev, pager, next, jumper"
