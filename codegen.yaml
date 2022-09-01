@@ -1,5 +1,5 @@
 schema: https://rickandmortyapi.com/graphql
-documents: "**/*.ts"
+documents: "./api/**/*.ts"
 generates:
   ./graphql/generated.ts:
     plugins:
