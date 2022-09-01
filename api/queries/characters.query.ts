@@ -1,14 +1,14 @@
 import { gql } from "@apollo/client/core";
-import { INFO_FRAGMENT, CHARACTER_FRAGMENT } from "../fragments/graphql.fragments";
+import { PAGINATION_FRAGMENT, CHARACTER_FRAGMENT } from "../fragments/graphql.fragments";
 
 const GET_CHARACTERS = gql`
-  ${INFO_FRAGMENT}
+  ${PAGINATION_FRAGMENT}
   ${CHARACTER_FRAGMENT}
 
   query GetCharacters($page: Int = 1, $filter: FilterCharacter) {
     characters(page: $page, filter: $filter) {
       info {
-        ...InfoFields
+        ...PaginationFields
       }
       results {
         ...CharacterFields

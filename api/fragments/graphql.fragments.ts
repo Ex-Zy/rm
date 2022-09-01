@@ -1,7 +1,7 @@
 import { gql } from "@apollo/client/core";
 
-export const INFO_FRAGMENT = gql`
-  fragment InfoFields on Info {
+export const PAGINATION_FRAGMENT = gql`
+  fragment PaginationFields on Info {
     count
     pages
     next

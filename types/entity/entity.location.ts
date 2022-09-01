@@ -1,5 +1,5 @@
-import { Character } from "./entity/entity.character";
-import type { ID } from "./id";
+import { Character } from "./entity.character";
+import type { ID } from "../id";
 
 export type Location = {
   id: ID;

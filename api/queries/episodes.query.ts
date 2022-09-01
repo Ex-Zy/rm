@@ -1,14 +1,14 @@
 import { gql } from "@apollo/client/core";
-import { INFO_FRAGMENT, EPISODE_FRAGMENT } from "../fragments/graphql.fragments";
+import { PAGINATION_FRAGMENT, EPISODE_FRAGMENT } from "../fragments/graphql.fragments";
 
 const GET_EPISODES = gql`
-  ${INFO_FRAGMENT}
+  ${PAGINATION_FRAGMENT}
   ${EPISODE_FRAGMENT}
 
   query GetEpisodes($page: Int = 1, $filter: FilterEpisode) {
     episodes(page: $page, filter: $filter) {
       info {
-        ...InfoFields
+        ...PaginationFields
       }
       results {
         ...EpisodeFields

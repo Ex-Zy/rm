@@ -1,5 +1,5 @@
 import type { ID } from "../id";
-import type { Location } from "../location";
+import type { Location } from "./entity.location";
 import type { Episode } from "./entity.episode";
 
 export type Character = {
