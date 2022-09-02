@@ -1,10 +1,9 @@
-import { useQuery } from "@vue/apollo-composable";
-import { GET_CHARACTERS } from "../api";
+import { useGetCharactersQuery } from "../graphql/generated";
 import { QueryCharacters } from "types/query/query.characters";
 
 const useCharactersList = (query: QueryCharacters) => {
   const variables = reactive({ ...query, ...(query.filter && { filter: { ...query.filter } }) });
-  const { result, loading, error } = useQuery(GET_CHARACTERS, variables);
+  const { result, loading, error } = useGetCharactersQuery(variables);
   const characters = computed(() => result.value?.characters.results ?? []);
   const totalRows = computed(() => result.value?.characters.info.count || 0);
   const updateCharactersList = (params: QueryCharacters) => {

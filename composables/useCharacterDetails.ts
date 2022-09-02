@@ -1,10 +1,9 @@
-import { useQuery } from "@vue/apollo-composable";
-import { GET_ONE_CHARACTER } from "@api";
+import { useGetOneCharacterQuery } from "../graphql/generated";
 
 const useCharacterDetails = () => {
   const route = useRoute();
-  const { result, loading, error } = useQuery(GET_ONE_CHARACTER, {
-    id: route.params.id,
+  const { result, loading, error } = useGetOneCharacterQuery({
+    id: String(route.params.id),
   });
 
   const character = computed(() => result.value?.character ?? {});

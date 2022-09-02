@@ -1,15 +1,12 @@
 import gql from "graphql-tag";
-import {
-  createMutationFunction,
-  createSmartQueryOptionsFunction,
-  createSmartSubscriptionOptionsFunction,
-} from "vue-apollo-smart-ops";
-import { ApolloError } from "apollo-client";
+import * as VueApolloComposable from "@vue/apollo-composable";
+import * as VueCompositionApi from "vue";
 export type Maybe<T> = T | null;
 export type InputMaybe<T> = Maybe<T>;
 export type Exact<T extends { [key: string]: unknown }> = { [K in keyof T]: T[K] };
 export type MakeOptional<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]?: Maybe<T[SubKey]> };
 export type MakeMaybe<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]: Maybe<T[SubKey]> };
+export type ReactiveFunction<TParam> = () => TParam;
 /** All built-in and custom scalars, mapped to their actual values */
 export type Scalars = {
   ID: string;
@@ -17,6 +14,7 @@ export type Scalars = {
   Boolean: boolean;
   Int: number;
   Float: number;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   Upload: any;
 };
 
@@ -471,31 +469,51 @@ export const GetCharactersDocument = gql`
 /**
  * __useGetCharactersQuery__
  *
- * To use a Smart Query within a Vue component, call `useGetCharactersQuery` as the value for a query key
- * in the component's `apollo` config, passing any options required for the query.
+ * To run a query within a Vue component, call `useGetCharactersQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetCharactersQuery` returns an object from Apollo Client that contains result, loading and error properties
+ * you can use to render your UI.
  *
- * @param options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/core/ApolloClient/#ApolloClient.query
+ * @param variables that will be passed into the query
+ * @param options that will be passed into the query, supported options are listed on: https://v4.apollo.vuejs.org/guide-composable/query.html#options;
  *
  * @example
- * {
- *   apollo: {
- *     getCharacters: useGetCharactersQuery({
- *       variables: {
- *         page: // value for 'page'
- *         filter: // value for 'filter'
- *       },
- *       loadingKey: 'loading',
- *       fetchPolicy: 'no-cache',
- *     }),
- *   }
- * }
+ * const { result, loading, error } = useGetCharactersQuery({
+ *   page: // value for 'page'
+ *   filter: // value for 'filter'
+ * });
  */
-export const useGetCharactersQuery = createSmartQueryOptionsFunction<
+export function useGetCharactersQuery(
+  variables:
+    | GetCharactersQueryVariables
+    | VueCompositionApi.Ref<GetCharactersQueryVariables>
+    | ReactiveFunction<GetCharactersQueryVariables> = {},
+  options:
+    | VueApolloComposable.UseQueryOptions<GetCharactersQuery, GetCharactersQueryVariables>
+    | VueCompositionApi.Ref<VueApolloComposable.UseQueryOptions<GetCharactersQuery, GetCharactersQueryVariables>>
+    | ReactiveFunction<VueApolloComposable.UseQueryOptions<GetCharactersQuery, GetCharactersQueryVariables>> = {},
+) {
+  return VueApolloComposable.useQuery<GetCharactersQuery, GetCharactersQueryVariables>(GetCharactersDocument, variables, options);
+}
+export function useGetCharactersLazyQuery(
+  variables:
+    | GetCharactersQueryVariables
+    | VueCompositionApi.Ref<GetCharactersQueryVariables>
+    | ReactiveFunction<GetCharactersQueryVariables> = {},
+  options:
+    | VueApolloComposable.UseQueryOptions<GetCharactersQuery, GetCharactersQueryVariables>
+    | VueCompositionApi.Ref<VueApolloComposable.UseQueryOptions<GetCharactersQuery, GetCharactersQueryVariables>>
+    | ReactiveFunction<VueApolloComposable.UseQueryOptions<GetCharactersQuery, GetCharactersQueryVariables>> = {},
+) {
+  return VueApolloComposable.useLazyQuery<GetCharactersQuery, GetCharactersQueryVariables>(
+    GetCharactersDocument,
+    variables,
+    options,
+  );
+}
+export type GetCharactersQueryCompositionFunctionResult = VueApolloComposable.UseQueryReturn<
   GetCharactersQuery,
-  GetCharactersQueryVariables,
-  ApolloError
->(GetCharactersDocument);
-
+  GetCharactersQueryVariables
+>;
 export const GetOneCharacterDocument = gql`
   query GetOneCharacter($id: ID = 1) {
     character(id: $id) {
@@ -508,30 +526,54 @@ export const GetOneCharacterDocument = gql`
 /**
  * __useGetOneCharacterQuery__
  *
- * To use a Smart Query within a Vue component, call `useGetOneCharacterQuery` as the value for a query key
- * in the component's `apollo` config, passing any options required for the query.
+ * To run a query within a Vue component, call `useGetOneCharacterQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetOneCharacterQuery` returns an object from Apollo Client that contains result, loading and error properties
+ * you can use to render your UI.
  *
- * @param options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/core/ApolloClient/#ApolloClient.query
+ * @param variables that will be passed into the query
+ * @param options that will be passed into the query, supported options are listed on: https://v4.apollo.vuejs.org/guide-composable/query.html#options;
  *
  * @example
- * {
- *   apollo: {
- *     getOneCharacter: useGetOneCharacterQuery({
- *       variables: {
- *         id: // value for 'id'
- *       },
- *       loadingKey: 'loading',
- *       fetchPolicy: 'no-cache',
- *     }),
- *   }
- * }
+ * const { result, loading, error } = useGetOneCharacterQuery({
+ *   id: // value for 'id'
+ * });
  */
-export const useGetOneCharacterQuery = createSmartQueryOptionsFunction<
+export function useGetOneCharacterQuery(
+  variables:
+    | GetOneCharacterQueryVariables
+    | VueCompositionApi.Ref<GetOneCharacterQueryVariables>
+    | ReactiveFunction<GetOneCharacterQueryVariables> = {},
+  options:
+    | VueApolloComposable.UseQueryOptions<GetOneCharacterQuery, GetOneCharacterQueryVariables>
+    | VueCompositionApi.Ref<VueApolloComposable.UseQueryOptions<GetOneCharacterQuery, GetOneCharacterQueryVariables>>
+    | ReactiveFunction<VueApolloComposable.UseQueryOptions<GetOneCharacterQuery, GetOneCharacterQueryVariables>> = {},
+) {
+  return VueApolloComposable.useQuery<GetOneCharacterQuery, GetOneCharacterQueryVariables>(
+    GetOneCharacterDocument,
+    variables,
+    options,
+  );
+}
+export function useGetOneCharacterLazyQuery(
+  variables:
+    | GetOneCharacterQueryVariables
+    | VueCompositionApi.Ref<GetOneCharacterQueryVariables>
+    | ReactiveFunction<GetOneCharacterQueryVariables> = {},
+  options:
+    | VueApolloComposable.UseQueryOptions<GetOneCharacterQuery, GetOneCharacterQueryVariables>
+    | VueCompositionApi.Ref<VueApolloComposable.UseQueryOptions<GetOneCharacterQuery, GetOneCharacterQueryVariables>>
+    | ReactiveFunction<VueApolloComposable.UseQueryOptions<GetOneCharacterQuery, GetOneCharacterQueryVariables>> = {},
+) {
+  return VueApolloComposable.useLazyQuery<GetOneCharacterQuery, GetOneCharacterQueryVariables>(
+    GetOneCharacterDocument,
+    variables,
+    options,
+  );
+}
+export type GetOneCharacterQueryCompositionFunctionResult = VueApolloComposable.UseQueryReturn<
   GetOneCharacterQuery,
-  GetOneCharacterQueryVariables,
-  ApolloError
->(GetOneCharacterDocument);
-
+  GetOneCharacterQueryVariables
+>;
 export const GetEpisodesDocument = gql`
   query GetEpisodes($page: Int = 1, $filter: FilterEpisode) {
     episodes(page: $page, filter: $filter) {
@@ -550,29 +592,47 @@ export const GetEpisodesDocument = gql`
 /**
  * __useGetEpisodesQuery__
  *
- * To use a Smart Query within a Vue component, call `useGetEpisodesQuery` as the value for a query key
- * in the component's `apollo` config, passing any options required for the query.
+ * To run a query within a Vue component, call `useGetEpisodesQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetEpisodesQuery` returns an object from Apollo Client that contains result, loading and error properties
+ * you can use to render your UI.
  *
- * @param options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/core/ApolloClient/#ApolloClient.query
+ * @param variables that will be passed into the query
+ * @param options that will be passed into the query, supported options are listed on: https://v4.apollo.vuejs.org/guide-composable/query.html#options;
  *
  * @example
- * {
- *   apollo: {
- *     getEpisodes: useGetEpisodesQuery({
- *       variables: {
- *         page: // value for 'page'
- *         filter: // value for 'filter'
- *       },
- *       loadingKey: 'loading',
- *       fetchPolicy: 'no-cache',
- *     }),
- *   }
- * }
+ * const { result, loading, error } = useGetEpisodesQuery({
+ *   page: // value for 'page'
+ *   filter: // value for 'filter'
+ * });
  */
-export const useGetEpisodesQuery = createSmartQueryOptionsFunction<GetEpisodesQuery, GetEpisodesQueryVariables, ApolloError>(
-  GetEpisodesDocument,
-);
-
+export function useGetEpisodesQuery(
+  variables:
+    | GetEpisodesQueryVariables
+    | VueCompositionApi.Ref<GetEpisodesQueryVariables>
+    | ReactiveFunction<GetEpisodesQueryVariables> = {},
+  options:
+    | VueApolloComposable.UseQueryOptions<GetEpisodesQuery, GetEpisodesQueryVariables>
+    | VueCompositionApi.Ref<VueApolloComposable.UseQueryOptions<GetEpisodesQuery, GetEpisodesQueryVariables>>
+    | ReactiveFunction<VueApolloComposable.UseQueryOptions<GetEpisodesQuery, GetEpisodesQueryVariables>> = {},
+) {
+  return VueApolloComposable.useQuery<GetEpisodesQuery, GetEpisodesQueryVariables>(GetEpisodesDocument, variables, options);
+}
+export function useGetEpisodesLazyQuery(
+  variables:
+    | GetEpisodesQueryVariables
+    | VueCompositionApi.Ref<GetEpisodesQueryVariables>
+    | ReactiveFunction<GetEpisodesQueryVariables> = {},
+  options:
+    | VueApolloComposable.UseQueryOptions<GetEpisodesQuery, GetEpisodesQueryVariables>
+    | VueCompositionApi.Ref<VueApolloComposable.UseQueryOptions<GetEpisodesQuery, GetEpisodesQueryVariables>>
+    | ReactiveFunction<VueApolloComposable.UseQueryOptions<GetEpisodesQuery, GetEpisodesQueryVariables>> = {},
+) {
+  return VueApolloComposable.useLazyQuery<GetEpisodesQuery, GetEpisodesQueryVariables>(GetEpisodesDocument, variables, options);
+}
+export type GetEpisodesQueryCompositionFunctionResult = VueApolloComposable.UseQueryReturn<
+  GetEpisodesQuery,
+  GetEpisodesQueryVariables
+>;
 export const GetOneEpisodesDocument = gql`
   query GetOneEpisodes($id: ID = 1) {
     episode(id: $id) {
@@ -585,26 +645,51 @@ export const GetOneEpisodesDocument = gql`
 /**
  * __useGetOneEpisodesQuery__
  *
- * To use a Smart Query within a Vue component, call `useGetOneEpisodesQuery` as the value for a query key
- * in the component's `apollo` config, passing any options required for the query.
+ * To run a query within a Vue component, call `useGetOneEpisodesQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetOneEpisodesQuery` returns an object from Apollo Client that contains result, loading and error properties
+ * you can use to render your UI.
  *
- * @param options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/core/ApolloClient/#ApolloClient.query
+ * @param variables that will be passed into the query
+ * @param options that will be passed into the query, supported options are listed on: https://v4.apollo.vuejs.org/guide-composable/query.html#options;
  *
  * @example
- * {
- *   apollo: {
- *     getOneEpisodes: useGetOneEpisodesQuery({
- *       variables: {
- *         id: // value for 'id'
- *       },
- *       loadingKey: 'loading',
- *       fetchPolicy: 'no-cache',
- *     }),
- *   }
- * }
+ * const { result, loading, error } = useGetOneEpisodesQuery({
+ *   id: // value for 'id'
+ * });
  */
-export const useGetOneEpisodesQuery = createSmartQueryOptionsFunction<
+export function useGetOneEpisodesQuery(
+  variables:
+    | GetOneEpisodesQueryVariables
+    | VueCompositionApi.Ref<GetOneEpisodesQueryVariables>
+    | ReactiveFunction<GetOneEpisodesQueryVariables> = {},
+  options:
+    | VueApolloComposable.UseQueryOptions<GetOneEpisodesQuery, GetOneEpisodesQueryVariables>
+    | VueCompositionApi.Ref<VueApolloComposable.UseQueryOptions<GetOneEpisodesQuery, GetOneEpisodesQueryVariables>>
+    | ReactiveFunction<VueApolloComposable.UseQueryOptions<GetOneEpisodesQuery, GetOneEpisodesQueryVariables>> = {},
+) {
+  return VueApolloComposable.useQuery<GetOneEpisodesQuery, GetOneEpisodesQueryVariables>(
+    GetOneEpisodesDocument,
+    variables,
+    options,
+  );
+}
+export function useGetOneEpisodesLazyQuery(
+  variables:
+    | GetOneEpisodesQueryVariables
+    | VueCompositionApi.Ref<GetOneEpisodesQueryVariables>
+    | ReactiveFunction<GetOneEpisodesQueryVariables> = {},
+  options:
+    | VueApolloComposable.UseQueryOptions<GetOneEpisodesQuery, GetOneEpisodesQueryVariables>
+    | VueCompositionApi.Ref<VueApolloComposable.UseQueryOptions<GetOneEpisodesQuery, GetOneEpisodesQueryVariables>>
+    | ReactiveFunction<VueApolloComposable.UseQueryOptions<GetOneEpisodesQuery, GetOneEpisodesQueryVariables>> = {},
+) {
+  return VueApolloComposable.useLazyQuery<GetOneEpisodesQuery, GetOneEpisodesQueryVariables>(
+    GetOneEpisodesDocument,
+    variables,
+    options,
+  );
+}
+export type GetOneEpisodesQueryCompositionFunctionResult = VueApolloComposable.UseQueryReturn<
   GetOneEpisodesQuery,
-  GetOneEpisodesQueryVariables,
-  ApolloError
->(GetOneEpisodesDocument);
+  GetOneEpisodesQueryVariables
+>;
