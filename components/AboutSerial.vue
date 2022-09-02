@@ -1,5 +1,5 @@
 <template>
-  <div class="page-wrapper">
+  <div class="page-wrapper about-page">
     <h2 style="text-align: center">Never Watched ‘Rick and Morty’?</h2>
     <p>
       Rick and Morty is an American adult animated science-fiction sitcom created by Justin Roiland and Dan Harmon for Cartoon
@@ -28,12 +28,17 @@
   </div>
 </template>
 
-<style>
-.page-wrapper img {
-  max-width: 100%;
-  height: auto;
+<style lang="scss">
+.page-wrapper {
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+  p {
+    line-height: 1.8;
+  }
 }
-.page-wrapper p {
-  line-height: 1.8;
+.about-page {
+  overflow: auto;
 }
 </style>
