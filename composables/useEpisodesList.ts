@@ -1,4 +1,4 @@
-import { useGetEpisodesQuery } from "../graphql/generated";
+import { useGetEpisodesQuery } from "../api/generated";
 import { QueryEpisodes } from "types/query/query.episodes";
 
 const useEpisodesList = (query: QueryEpisodes) => {

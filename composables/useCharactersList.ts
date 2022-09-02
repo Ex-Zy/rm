@@ -1,4 +1,4 @@
-import { useGetCharactersQuery } from "../graphql/generated";
+import { useGetCharactersQuery } from "../api/generated";
 import { QueryCharacters } from "types/query/query.characters";
 
 const useCharactersList = (query: QueryCharacters) => {

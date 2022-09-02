@@ -1,4 +1,4 @@
-import { useGetOneCharacterQuery } from "../graphql/generated";
+import { useGetOneCharacterQuery } from "../api/generated";
 
 const useCharacterDetails = () => {
   const route = useRoute();

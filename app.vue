@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import apolloProvider from "./apollo";
+import apolloProvider from "./api/apollo";
 provide("apolloProvider", apolloProvider);
 </script>
 

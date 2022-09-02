@@ -1,4 +1,4 @@
-import { useGetOneEpisodesQuery } from "../graphql/generated";
+import { useGetOneEpisodesQuery } from "../api/generated";
 
 const useEpisodeDetails = () => {
   const route = useRoute();
