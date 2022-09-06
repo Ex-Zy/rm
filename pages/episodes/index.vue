@@ -1,31 +1,18 @@
 <script lang="ts" setup>
 import { ElAlert, ElSkeleton } from "element-plus";
-import { QueryEpisodes } from "types/query/query.episodes";
+import GridModel from "../../models/grid.model";
 
-const query: QueryEpisodes = reactive({
-  page: 1,
-  filter: {
-    name: "",
-    episode: "",
-  },
-});
-const { episodes, loading, error, totalRows, updateEpisodesList } = useEpisodesList(query);
-const updatePageQuery = (params: QueryEpisodes) => {
-  query.page = params.page;
-  query.filter = params.filter;
-};
-const updatePage = (params: QueryEpisodes) => {
-  updatePageQuery(params);
-  updateEpisodesList(params);
-};
+const initialParams = { page: 1, filter: { name: "", episode: "" } };
+const gridModel = reactive(new GridModel(initialParams));
+const { records, loading, error, totalRecords } = useEpisodesList(gridModel);
 </script>
 
 <template>
   <div class="page-wrapper">
     <ClientOnly>
       <FilterBarEpisodes
-        :filter="query.filter"
-        @update:filter="(filter) => updatePage({ filter, page: 1 })" />
+        :filter="gridModel.filter"
+        @update:filter="(filter) => gridModel.updateFilter(filter)" />
       <template #fallback>
         <ElSkeleton
           :rows="1"
@@ -41,11 +28,11 @@ const updatePage = (params: QueryEpisodes) => {
       show-icon />
     <ClientOnly v-else>
       <GridEpisodes
-        :page="query.page"
+        :page="gridModel.page"
         :loading="loading"
-        :episodes="episodes"
-        :total-rows="totalRows"
-        @update:page="(page) => updatePage({ page, filter: { ...query.filter } })" />
+        :episodes="records"
+        :total-rows="totalRecords"
+        @update:page="(page) => gridModel.updatePage(page)" />
       <template #fallback>
         <ElSkeleton
           :rows="12"

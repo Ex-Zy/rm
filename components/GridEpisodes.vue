@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import dayjs from "dayjs";
-import { getCharacterType } from "@helpers";
 import { ElTable, ElTableColumn, ElTooltip, ElPagination, ElLink, ElTag, vLoading } from "element-plus";
 import { Episode } from "types/entity/entity.episode";
+import CharacterService from "../services/character.service";
 
 const props = defineProps<{
   page: number;
@@ -38,7 +38,7 @@ const updatePage = (page: number) => emit("update:page", page);
             :content="character.status"
             effect="dark">
             <ElTag
-              :type="getCharacterType(character.status)"
+              :type="CharacterService.transformStatusIntoType(character.status)"
               effect="dark"
               style="margin: 10px 10px 0 0">
               {{ character.name }}

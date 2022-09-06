@@ -1,34 +1,18 @@
 <script lang="ts" setup>
 import { ElAlert, ElSkeleton } from "element-plus";
-import { QueryCharacters } from "types/query/query.characters";
+import GridModel from "../../models/grid.model";
 
-const query: QueryCharacters = reactive({
-  page: 1,
-  filter: {
-    name: "",
-    status: "",
-    species: "",
-    type: "",
-    gender: "",
-  },
-});
-const { characters, loading, error, totalRows, updateCharactersList } = useCharactersList(query);
-const updatePageQuery = (params: QueryCharacters) => {
-  query.page = params.page;
-  query.filter = params.filter;
-};
-const updatePage = (params: QueryCharacters) => {
-  updatePageQuery(params);
-  updateCharactersList(params);
-};
+const initialParams = { page: 1, filter: { name: "", status: "", species: "", type: "", gender: "" } };
+const gridModel = reactive(new GridModel(initialParams));
+const { records, loading, error, totalRecords } = useCharactersList(gridModel);
 </script>
 
 <template>
   <div class="page-wrapper">
     <ClientOnly>
       <FilterBarCharacters
-        :filter="query.filter"
-        @update:filter="(filter) => updatePage({ filter, page: 1 })" />
+        :filter="gridModel.filter"
+        @update:filter="(filter) => gridModel.updateFilter(filter)" />
       <template #fallback>
         <ElSkeleton
           :rows="1"
@@ -44,11 +28,11 @@ const updatePage = (params: QueryCharacters) => {
       show-icon />
     <ClientOnly v-else>
       <GridCharacters
-        :page="query.page"
+        :page="gridModel.page"
         :loading="loading"
-        :characters="characters"
-        :total-rows="totalRows"
-        @update:page="(page) => updatePage({ page, filter: { ...query.filter } })" />
+        :characters="records"
+        :total-rows="totalRecords"
+        @update:page="(page) => gridModel.updatePage(page)" />
       <template #fallback>
         <ElSkeleton
           :rows="12"

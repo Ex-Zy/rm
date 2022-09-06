@@ -1,17 +1,15 @@
+import { GridState } from "types/grid/grid";
 import { useGetCharactersQuery } from "../api/generated";
-import { QueryCharacters } from "types/query/query.characters";
 
-const useCharactersList = (query: QueryCharacters) => {
-  const variables = reactive({ ...query, ...(query.filter && { filter: { ...query.filter } }) });
-  const { result, loading, error } = useGetCharactersQuery(variables);
-  const characters = computed(() => result.value?.characters.results ?? []);
-  const totalRows = computed(() => result.value?.characters.info.count || 0);
-  const updateCharactersList = (params: QueryCharacters) => {
-    if (params.page) variables.page = params.page;
-    if (params.filter) variables.filter = params.filter;
+const useCharactersList = <T extends GridState>(gridReactiveModel: T) => {
+  const { result, loading, error } = useGetCharactersQuery(gridReactiveModel);
+
+  return {
+    loading,
+    error,
+    totalRecords: computed(() => result.value?.characters.info.count || 0),
+    records: computed(() => result.value?.characters.results ?? []),
   };
-
-  return { characters, loading, error, totalRows, updateCharactersList };
 };
 
 export default useCharactersList;

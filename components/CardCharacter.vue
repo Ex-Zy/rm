@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import dayjs from "dayjs";
-import { getCharacterType } from "@helpers";
 import { ElCard, ElAvatar, ElDescriptions, ElDescriptionsItem, ElTag } from "element-plus";
+import CharacterService from "../services/character.service";
 
 interface ICharacter {
   id: string | number;
@@ -60,7 +60,7 @@ defineProps<{
       >
       <ElDescriptionsItem label="Status">
         <ElTag
-          :type="getCharacterType(character.status)"
+          :type="CharacterService.transformStatusIntoType(character.status)"
           effect="dark"
           size="large">
           {{ character.status }}
