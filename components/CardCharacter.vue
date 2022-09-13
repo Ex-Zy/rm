@@ -25,11 +25,13 @@ defineProps<{
 <template>
   <ElCard
     class="box-card"
-    style="margin: 40px auto 0">
+    style="margin: 40px auto 0"
+  >
     <template #header>
       <div
         class="card-header"
-        style="justify-content: center">
+        style="justify-content: center"
+      >
         <span>
           #{{ character.id }}
           <strong>{{ character.name }}</strong>
@@ -40,13 +42,15 @@ defineProps<{
       <ElAvatar
         shape="square"
         :size="300"
-        :src="character.image" />
+        :src="character.image"
+      />
     </div>
     <ElDescriptions
       direction="vertical"
       :column="4"
       size="large"
-      border>
+      border
+    >
       <ElDescriptionsItem label="Species">
         {{ character.species }}
       </ElDescriptionsItem>
@@ -62,7 +66,8 @@ defineProps<{
         <ElTag
           :type="CharacterService.transformStatusIntoType(character.status)"
           effect="dark"
-          size="large">
+          size="large"
+        >
           {{ character.status }}
         </ElTag>
       </ElDescriptionsItem>

@@ -12,11 +12,13 @@ const { records, loading, error, totalRecords } = useCharactersList(gridModel);
     <ClientOnly>
       <FilterBarCharacters
         :filter="gridModel.filter"
-        @update:filter="(filter) => gridModel.updateFilter(filter)" />
+        @update:filter="(filter) => gridModel.updateFilter(filter)"
+      />
       <template #fallback>
         <ElSkeleton
           :rows="1"
-          animated />
+          animated
+        />
       </template>
     </ClientOnly>
     <h2 style="text-align: center">The Rick and Morty characters as seen on the TV show</h2>
@@ -25,18 +27,21 @@ const { records, loading, error, totalRecords } = useCharactersList(gridModel);
       :title="error.message"
       type="error"
       effect="dark"
-      show-icon />
+      show-icon
+    />
     <ClientOnly v-else>
       <GridCharacters
         :page="gridModel.page"
         :loading="loading"
         :characters="records"
         :total-rows="totalRecords"
-        @update:page="(page) => gridModel.updatePage(page)" />
+        @update:page="(page) => gridModel.updatePage(page)"
+      />
       <template #fallback>
         <ElSkeleton
           :rows="12"
-          animated />
+          animated
+        />
       </template>
     </ClientOnly>
   </div>

@@ -10,25 +10,30 @@ const activeLink = computed(() => route?.path ?? "/");
     :default-active="activeLink"
     router
     class="el-menu-demo"
-    mode="horizontal">
+    mode="horizontal"
+  >
     <ElMenuItem
       index="/"
       route="/"
-      style="margin-right: auto; padding: 0; background-color: transparent">
+      style="margin-right: auto; padding: 0; background-color: transparent"
+    >
       <NuxtLink
         to="/"
-        style="text-decoration: none; padding: 0">
+        style="text-decoration: none; padding: 0"
+      >
         <img
           src="~/assets/logo.svg"
           width="120"
           height="56"
-          style="display: block" />
+          style="display: block"
+        />
       </NuxtLink>
     </ElMenuItem>
     <ElMenuItem
       :class="{ 'is-active': activeLink.includes('characters') }"
       index="/characters"
-      route="/characters">
+      route="/characters"
+    >
       <NuxtLink
         to="/characters"
         style="text-decoration: none"
@@ -38,7 +43,8 @@ const activeLink = computed(() => route?.path ?? "/");
     <ElMenuItem
       :class="{ 'is-active': activeLink.includes('episodes') }"
       index="/episodes"
-      route="/episodes">
+      route="/episodes"
+    >
       <NuxtLink
         to="/episodes"
         style="text-decoration: none"

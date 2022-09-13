@@ -22,11 +22,13 @@ defineProps<{
 <template>
   <ElCard
     class="box-card"
-    style="margin: 40px auto 0">
+    style="margin: 40px auto 0"
+  >
     <template #header>
       <div
         class="card-header"
-        style="justify-content: center">
+        style="justify-content: center"
+      >
         <span>
           #{{ episode.id }}
           <strong>{{ episode.name }}</strong>
@@ -37,7 +39,8 @@ defineProps<{
       direction="vertical"
       :column="4"
       size="large"
-      border>
+      border
+    >
       <ElDescriptionsItem label="Air date">
         {{ episode.air_date }}
       </ElDescriptionsItem>
@@ -55,7 +58,8 @@ defineProps<{
           :key="character.id"
           :type="CharacterService.transformStatusIntoType(character.status)"
           effect="dark"
-          style="margin: 10px 10px 0 0">
+          style="margin: 10px 10px 0 0"
+        >
           {{ character.name }}
         </ElTag>
       </ElDescriptionsItem>

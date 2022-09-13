@@ -7,3 +7,8 @@ node_modules
 .output
 .nuxt
 generated
+
+README.md
+package-lock.json
+.gitignore
+.eslintignore

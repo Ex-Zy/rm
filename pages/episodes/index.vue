@@ -12,11 +12,13 @@ const { records, loading, error, totalRecords } = useEpisodesList(gridModel);
     <ClientOnly>
       <FilterBarEpisodes
         :filter="gridModel.filter"
-        @update:filter="(filter) => gridModel.updateFilter(filter)" />
+        @update:filter="(filter) => gridModel.updateFilter(filter)"
+      />
       <template #fallback>
         <ElSkeleton
           :rows="1"
-          animated />
+          animated
+        />
       </template>
     </ClientOnly>
     <h2 style="text-align: center">List of Rick and Morty episodes</h2>
@@ -25,18 +27,21 @@ const { records, loading, error, totalRecords } = useEpisodesList(gridModel);
       :title="error.message"
       type="error"
       effect="dark"
-      show-icon />
+      show-icon
+    />
     <ClientOnly v-else>
       <GridEpisodes
         :page="gridModel.page"
         :loading="loading"
         :episodes="records"
         :total-rows="totalRecords"
-        @update:page="(page) => gridModel.updatePage(page)" />
+        @update:page="(page) => gridModel.updatePage(page)"
+      />
       <template #fallback>
         <ElSkeleton
           :rows="12"
-          animated />
+          animated
+        />
       </template>
     </ClientOnly>
   </div>

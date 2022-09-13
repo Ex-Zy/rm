@@ -10,16 +10,19 @@ const { episode, error, loading } = useEpisodeDetails();
       :title="error.message"
       type="error"
       effect="dark"
-      show-icon />
+      show-icon
+    />
     <ClientOnly v-else>
       <CardEpisode
         v-loading="loading"
-        :episode="episode" />
+        :episode="episode"
+      />
       <template #fallback>
         <ElSkeleton
           animated
           :rows="10"
-          style="max-width: 480px; margin: 60px auto 0" />
+          style="max-width: 480px; margin: 60px auto 0"
+        />
       </template>
     </ClientOnly>
   </div>

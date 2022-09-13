@@ -29,36 +29,42 @@ const handleSumbitFilter = () => emits("update:filter", { ...localFilter.value }
       v-model="localFilter.name"
       label="Name"
       placeholder="Rick Sanchez"
-      name="name" />
+      name="name"
+    />
     <FormKit
       v-model="localFilter.species"
       label="Species"
       placeholder="Human"
-      name="species" />
+      name="species"
+    />
     <FormKit
       v-model="localFilter.status"
       type="select"
       label="Status"
       placeholder="Alive"
       name="status"
-      :options="['alive', 'dead', 'unknown']" />
+      :options="['alive', 'dead', 'unknown']"
+    />
     <FormKit
       v-model="localFilter.gender"
       type="select"
       label="Gender"
       name="gender"
       placeholder="male"
-      :options="['male', 'female', 'genderless', 'unknown']" />
+      :options="['male', 'female', 'genderless', 'unknown']"
+    />
     <FormKit
       v-model="localFilter.type"
       label="Type"
       placeholder="Unknown"
-      name="type" />
+      name="type"
+    />
     <FormKit
       style="width: 100%"
       type="button"
       label="Search"
-      @click="handleSumbitFilter" />
+      @click="handleSumbitFilter"
+    />
   </div>
 </template>
 

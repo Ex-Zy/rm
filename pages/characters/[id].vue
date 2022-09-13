@@ -10,16 +10,19 @@ const { character, error, loading } = useCharacterDetails();
       :title="error.message"
       type="error"
       effect="dark"
-      show-icon />
-    <ClientOnly v-else
-      ><CardCharacter
+      show-icon
+    />
+    <ClientOnly v-else>
+      <CardCharacter
         v-loading="loading"
-        :character="character" />
+        :character="character"
+      />
       <template #fallback>
         <ElSkeleton
           animated
           :rows="14"
-          style="max-width: 480px; margin: 60px auto 0" />
+          style="max-width: 480px; margin: 60px auto 0"
+        />
       </template>
     </ClientOnly>
   </div>

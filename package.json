@@ -7,7 +7,8 @@
     "preview": "nuxt preview",
     "deploy": "push-dir --dir=dist --branch=gh-pages --cleanup",
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix",
-    "codegen": "graphql-codegen"
+    "codegen": "graphql-codegen",
+    "prettier": "prettier --write ."
   },
   "devDependencies": {
     "@graphql-codegen/cli": "^2.12.0",

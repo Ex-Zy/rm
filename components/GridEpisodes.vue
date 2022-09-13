@@ -26,7 +26,8 @@ const updatePage = (page: number) => emit("update:page", page);
     :data="episodes"
     style="width: 100%; flex-grow: 1; margin-bottom: 15px; height: 100px"
     stripe
-    border>
+    border
+  >
     <ElTableColumn type="expand">
       <template #default="{ row }">
         <div style="padding: 10px">
@@ -36,11 +37,13 @@ const updatePage = (page: number) => emit("update:page", page);
             :key="character.id"
             placement="top-end"
             :content="character.status"
-            effect="dark">
+            effect="dark"
+          >
             <ElTag
               :type="CharacterService.transformStatusIntoType(character.status)"
               effect="dark"
-              style="margin: 10px 10px 0 0">
+              style="margin: 10px 10px 0 0"
+            >
               {{ character.name }}
             </ElTag>
           </ElTooltip>
@@ -50,15 +53,18 @@ const updatePage = (page: number) => emit("update:page", page);
     <ElTableColumn
       prop="id"
       label="id"
-      width="50" />
+      width="50"
+    />
     <ElTableColumn
       prop="name"
       label="Name"
-      width="300">
+      width="300"
+    >
       <template #default="{ row }">
         <NuxtLink
           :to="`/episodes/${row.id}`"
-          style="text-decoration: none">
+          style="text-decoration: none"
+        >
           <ElLink type="primary">
             {{ row.name }}
           </ElLink>
@@ -69,16 +75,19 @@ const updatePage = (page: number) => emit("update:page", page);
       prop="air_date"
       label="Air date"
       width="200"
-      sortable />
+      sortable
+    />
     <ElTableColumn
       prop="episode"
       label="Episode"
       width="150"
-      sortable />
+      sortable
+    />
     <ElTableColumn
       prop="created"
       label="Created"
-      sortable>
+      sortable
+    >
       <template #default="{ row }">
         {{ dayjs(row.created).format("MM/DD/YYYY") }}
       </template>
@@ -92,5 +101,6 @@ const updatePage = (page: number) => emit("update:page", page);
     :background="true"
     layout="total, prev, pager, next, jumper"
     :total="totalRows"
-    @current-change="updatePage" />
+    @current-change="updatePage"
+  />
 </template>

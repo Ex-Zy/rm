@@ -24,16 +24,19 @@ const handleSumbitFilter = () => emits("update:filter", { ...localFilter.value }
       v-model="localFilter.name"
       label="Name"
       placeholder="Rick Sanchez"
-      name="name" />
+      name="name"
+    />
     <FormKit
       v-model="localFilter.episode"
       label="Episode"
       placeholder="S01E02"
-      name="episode" />
+      name="episode"
+    />
     <FormKit
       type="button"
       label="Search"
-      @click="handleSumbitFilter" />
+      @click="handleSumbitFilter"
+    />
   </div>
 </template>
 
