@@ -5,6 +5,7 @@
   "printWidth": 130,
   "singleAttributePerLine": true,
   "trailingComma": "all",
-  "bracketSameLine": true,
-  "bracketSpacing": true
+  "bracketSameLine": false,
+  "bracketSpacing": true,
+  "endOfLine": "auto"
 }
