@@ -1,5 +1,5 @@
 import { fileURLToPath } from "node:url";
-import { defineNuxtConfig } from "nuxt";
+import { defineNuxtConfig } from "nuxt/config";
 
 const resolveUrl = (path) => fileURLToPath(new URL(path, import.meta.url));
 

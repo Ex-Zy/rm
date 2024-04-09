@@ -25,7 +25,7 @@
     "eslint-plugin-prettier": "^4.2.1",
     "eslint-plugin-unused-imports": "^2.0.0",
     "eslint-plugin-vue": "^9.3.0",
-    "nuxt": "^3.0.0-rc.8",
+    "nuxt": "^3.11.2",
     "prettier": "^2.3.2",
     "push-dir": "^0.4.1",
     "sass": "^1.54.5"
