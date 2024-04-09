@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { FilterEpisode } from "types/filter/filter.episode";
+import type { FilterEpisode } from "@types";
 
 const props = defineProps<{
   filter: FilterEpisode;
@@ -13,9 +13,11 @@ const localFilter = ref({
   episode: "",
 });
 
-const updateLocalFilter = (propsFilter) => (Object.keys(propsFilter).length ? (localFilter.value = propsFilter) : null);
+const updateLocalFilter = (propsFilter) =>
+  Object.keys(propsFilter).length ? (localFilter.value = propsFilter) : null;
 watch(() => ({ ...props.filter }), updateLocalFilter, { immediate: true });
-const handleSumbitFilter = () => emits("update:filter", { ...localFilter.value });
+const handleSumbitFilter = () =>
+  emits("update:filter", { ...localFilter.value });
 </script>
 
 <template>
@@ -32,11 +34,7 @@ const handleSumbitFilter = () => emits("update:filter", { ...localFilter.value }
       placeholder="S01E02"
       name="episode"
     />
-    <FormKit
-      type="button"
-      label="Search"
-      @click="handleSumbitFilter"
-    />
+    <FormKit type="button" label="Search" @click="handleSumbitFilter" />
   </div>
 </template>
 

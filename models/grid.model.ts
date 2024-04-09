@@ -1,5 +1,5 @@
-import { Grid, GridState, GridFilter } from "types/grid/grid";
 import BaseGridModel from "./base.grid.model";
+import type { Grid, GridFilter, GridState } from "@types";
 
 class GridModel extends BaseGridModel implements Grid {
   public filter?: GridFilter;

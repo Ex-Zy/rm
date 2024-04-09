@@ -1,5 +1,9 @@
 import { gql } from "@apollo/client/core";
-import { CHARACTER_FRAGMENT, EPISODE_FRAGMENT, PAGINATION_FRAGMENT } from "./fragments";
+import {
+  CHARACTER_FRAGMENT,
+  EPISODE_FRAGMENT,
+  PAGINATION_FRAGMENT,
+} from "./fragments";
 
 const GET_CHARACTERS = gql`
   ${PAGINATION_FRAGMENT}

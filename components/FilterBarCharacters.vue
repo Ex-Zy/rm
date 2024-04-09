@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { FilterCharacter } from "types/filter/filter.character";
+import type { FilterCharacter } from "@types";
 
 const props = defineProps<{
   filter: FilterCharacter;
@@ -16,11 +16,13 @@ const localFilter = ref({
   gender: "",
 });
 
-const updateLocalFilter = (propsFilter) => (Object.keys(propsFilter).length ? (localFilter.value = propsFilter) : null);
+const updateLocalFilter = (propsFilter) =>
+  Object.keys(propsFilter).length ? (localFilter.value = propsFilter) : null;
 
 watch(() => ({ ...props.filter }), updateLocalFilter, { immediate: true });
 
-const handleSumbitFilter = () => emits("update:filter", { ...localFilter.value });
+const handleSumbitFilter = () =>
+  emits("update:filter", { ...localFilter.value });
 </script>
 
 <template>

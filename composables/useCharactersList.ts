@@ -1,5 +1,5 @@
-import { GridState } from "types/grid/grid";
 import { useGetCharactersQuery } from "../api/generated";
+import type { GridState } from "@types";
 
 const useCharactersList = <T extends GridState>(gridReactiveModel: T) => {
   const { result, loading, error } = useGetCharactersQuery(gridReactiveModel);

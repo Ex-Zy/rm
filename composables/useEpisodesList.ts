@@ -1,5 +1,5 @@
-import { GridState } from "types/grid/grid";
 import { useGetEpisodesQuery } from "../api/generated";
+import type { GridState } from "@types";
 
 const useEpisodesList = <T extends GridState>(gridReactiveModel: T) => {
   const { result, loading, error } = useGetEpisodesQuery(gridReactiveModel);

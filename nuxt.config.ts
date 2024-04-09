@@ -1,27 +1,25 @@
 import { fileURLToPath } from "node:url";
 import { defineNuxtConfig } from "nuxt/config";
 
-const resolveUrl = (path) => fileURLToPath(new URL(path, import.meta.url));
+const resolveUrl = (path: string) =>
+  fileURLToPath(new URL(path, import.meta.url));
 
 const isProduction = process.env.NODE_ENV === "production";
 
 export default defineNuxtConfig({
-  modules: ["@formkit/nuxt"],
+  devtools: { enabled: true },
+  modules: ["@formkit/nuxt", "@nuxtjs/eslint-module"],
   css: ["element-plus/dist/index.css", "@formkit/themes/genesis"],
-  target: "static",
-  router: {
-    base: "/rm/",
-  },
-  app: {
-    baseURL: isProduction ? "/rm/" : "/",
-  },
   alias: {
     "@": resolveUrl("./"),
     "@api": resolveUrl("./api/"),
     "@helpers": resolveUrl("./helpers/"),
+    "@types": resolveUrl("./types/"),
   },
   typescript: {
-    shim: false,
+    // shim: false,
+    typeCheck: true,
+    strict: true,
   },
   build: {
     transpile: [
@@ -30,6 +28,5 @@ export default defineNuxtConfig({
       "ts-invariant/process",
       ...(isProduction ? ["dayjs", "element-plus"] : []),
     ],
-    extractCSS: true,
   },
 });

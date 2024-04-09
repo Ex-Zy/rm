@@ -13,10 +13,7 @@ const { character, error, loading } = useCharacterDetails();
       show-icon
     />
     <ClientOnly v-else>
-      <CardCharacter
-        v-loading="loading"
-        :character="character"
-      />
+      <CardCharacter v-loading="loading" :character="character" />
       <template #fallback>
         <ElSkeleton
           animated

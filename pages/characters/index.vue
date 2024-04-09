@@ -2,7 +2,10 @@
 import { ElAlert, ElSkeleton } from "element-plus";
 import GridModel from "../../models/grid.model";
 
-const initialParams = { page: 1, filter: { name: "", status: "", species: "", type: "", gender: "" } };
+const initialParams = {
+  page: 1,
+  filter: { name: "", status: "", species: "", type: "", gender: "" },
+};
 const gridModel = reactive(new GridModel(initialParams));
 const { records, loading, error, totalRecords } = useCharactersList(gridModel);
 </script>
@@ -15,13 +18,12 @@ const { records, loading, error, totalRecords } = useCharactersList(gridModel);
         @update:filter="(filter) => gridModel.updateFilter(filter)"
       />
       <template #fallback>
-        <ElSkeleton
-          :rows="1"
-          animated
-        />
+        <ElSkeleton :rows="1" animated />
       </template>
     </ClientOnly>
-    <h2 style="text-align: center">The Rick and Morty characters as seen on the TV show</h2>
+    <h2 style="text-align: center">
+      The Rick and Morty characters as seen on the TV show
+    </h2>
     <ElAlert
       v-if="error"
       :title="error.message"
@@ -38,10 +40,7 @@ const { records, loading, error, totalRecords } = useCharactersList(gridModel);
         @update:page="(page) => gridModel.updatePage(page)"
       />
       <template #fallback>
-        <ElSkeleton
-          :rows="12"
-          animated
-        />
+        <ElSkeleton :rows="12" animated />
       </template>
     </ClientOnly>
   </div>

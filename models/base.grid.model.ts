@@ -1,4 +1,4 @@
-import { BaseGrid } from "types/grid/base.grid";
+import type { BaseGrid } from "@types";
 
 class BaseGridModel implements BaseGrid {
   public page: number;

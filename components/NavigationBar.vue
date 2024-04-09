@@ -17,10 +17,7 @@ const activeLink = computed(() => route?.path ?? "/");
       route="/"
       style="margin-right: auto; padding: 0; background-color: transparent"
     >
-      <NuxtLink
-        to="/"
-        style="text-decoration: none; padding: 0"
-      >
+      <NuxtLink to="/" style="text-decoration: none; padding: 0">
         <img
           src="~/assets/logo.svg"
           width="120"
@@ -34,9 +31,7 @@ const activeLink = computed(() => route?.path ?? "/");
       index="/characters"
       route="/characters"
     >
-      <NuxtLink
-        to="/characters"
-        style="text-decoration: none"
+      <NuxtLink to="/characters" style="text-decoration: none"
         >Characters</NuxtLink
       >
     </ElMenuItem>
@@ -45,11 +40,7 @@ const activeLink = computed(() => route?.path ?? "/");
       index="/episodes"
       route="/episodes"
     >
-      <NuxtLink
-        to="/episodes"
-        style="text-decoration: none"
-        >Episodes</NuxtLink
-      >
+      <NuxtLink to="/episodes" style="text-decoration: none">Episodes</NuxtLink>
     </ElMenuItem>
   </ElMenu>
 </template>

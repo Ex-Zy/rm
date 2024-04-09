@@ -12,7 +12,9 @@ export const deepClone = <T>(target: T): T => {
     return cp.map((n: any) => deepClone<any>(n)) as any;
   }
   if (typeof target === "object") {
-    const cp = { ...(target as { [key: string]: any }) } as { [key: string]: any };
+    const cp = { ...(target as { [key: string]: any }) } as {
+      [key: string]: any;
+    };
     Object.keys(cp).forEach((k) => (cp[k] = deepClone<any>(cp[k])));
     return cp as T;
   }
