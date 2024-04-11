@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import dayjs from "dayjs";
+import dayjs from 'dayjs'
 import {
   ElTable,
   ElTableColumn,
@@ -8,24 +8,24 @@ import {
   ElLink,
   ElTag,
   vLoading,
-} from "element-plus";
-import CharacterService from "../services/character.service";
-import type { Episode } from "@types";
+} from 'element-plus'
+import CharacterService from '../services/character.service'
+import type { Episode } from '@types'
 
 const props = defineProps<{
-  page: number;
-  loading: boolean;
-  totalRows: number;
-  episodes: Episode[];
-}>();
+  page: number
+  loading: boolean
+  totalRows: number
+  episodes: Episode[]
+}>()
 const emit = defineEmits<{
-  (e: "update:page", page: number | string): void;
-}>();
+  (e: 'update:page', page: number | string): void
+}>()
 
-const currentPage = ref(1);
-watchEffect(() => (currentPage.value = props.page));
+const currentPage = ref(1)
+watchEffect(() => (currentPage.value = props.page))
 
-const updatePage = (page: number) => emit("update:page", page);
+const updatePage = (page: number) => emit('update:page', page)
 </script>
 
 <template>
@@ -39,9 +39,7 @@ const updatePage = (page: number) => emit("update:page", page);
     <ElTableColumn type="expand">
       <template #default="{ row }">
         <div style="padding: 10px">
-          <h3 style="margin: 0">
-            Characters
-          </h3>
+          <h3 style="margin: 0">Characters</h3>
           <ElTooltip
             v-for="character in row.characters"
             :key="character.id"
@@ -60,46 +58,21 @@ const updatePage = (page: number) => emit("update:page", page);
         </div>
       </template>
     </ElTableColumn>
-    <ElTableColumn
-      prop="id"
-      label="id"
-      width="50"
-    />
-    <ElTableColumn
-      prop="name"
-      label="Name"
-      width="300"
-    >
+    <ElTableColumn prop="id" label="id" width="50" />
+    <ElTableColumn prop="name" label="Name" width="300">
       <template #default="{ row }">
-        <NuxtLink
-          :to="`/episodes/${row.id}`"
-          style="text-decoration: none"
-        >
+        <NuxtLink :to="`/episodes/${row.id}`" style="text-decoration: none">
           <ElLink type="primary">
             {{ row.name }}
           </ElLink>
         </NuxtLink>
       </template>
     </ElTableColumn>
-    <ElTableColumn
-      prop="air_date"
-      label="Air date"
-      width="200"
-      sortable
-    />
-    <ElTableColumn
-      prop="episode"
-      label="Episode"
-      width="150"
-      sortable
-    />
-    <ElTableColumn
-      prop="created"
-      label="Created"
-      sortable
-    >
+    <ElTableColumn prop="air_date" label="Air date" width="200" sortable />
+    <ElTableColumn prop="episode" label="Episode" width="150" sortable />
+    <ElTableColumn prop="created" label="Created" sortable>
       <template #default="{ row }">
-        {{ dayjs(row.created).format("MM/DD/YYYY") }}
+        {{ dayjs(row.created).format('MM/DD/YYYY') }}
       </template>
     </ElTableColumn>
   </ElTable>

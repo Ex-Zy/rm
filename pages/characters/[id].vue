@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { ElAlert, vLoading, ElSkeleton } from "element-plus";
-const { character, error, loading } = useCharacterDetails();
+import { ElAlert, vLoading, ElSkeleton } from 'element-plus'
+const { character, error, loading } = useCharacterDetails()
 </script>
 
 <template>
@@ -13,10 +13,7 @@ const { character, error, loading } = useCharacterDetails();
       show-icon
     />
     <ClientOnly v-else>
-      <CardCharacter
-        v-loading="loading"
-        :character="character"
-      />
+      <CardCharacter v-loading="loading" :character="character" />
       <template #fallback>
         <ElSkeleton
           animated

@@ -1,8 +1,6 @@
 <template>
   <div class="page-wrapper about-page">
-    <h2 style="text-align: center">
-      Never Watched ‘Rick and Morty’?
-    </h2>
+    <h2 style="text-align: center">Never Watched ‘Rick and Morty’?</h2>
     <p>
       Rick and Morty is an American adult animated science-fiction sitcom
       created by Justin Roiland and Dan Harmon for Cartoon Network's nighttime
@@ -33,7 +31,7 @@
       year-old anxious boy who is not so smart. Together, they explore the
       infinite universes; causing mayhem and running into trouble.
     </p>
-    <p><img src="~/assets/wallper.jpg"></p>
+    <p><img src="~/assets/wallper.jpg" /></p>
   </div>
 </template>
 

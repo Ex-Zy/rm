@@ -1,9 +1,9 @@
-import { gql } from "@apollo/client/core";
+import { gql } from '@apollo/client/core'
 import {
   CHARACTER_FRAGMENT,
   EPISODE_FRAGMENT,
   PAGINATION_FRAGMENT,
-} from "./fragments";
+} from './fragments'
 
 const GET_CHARACTERS = gql`
   ${PAGINATION_FRAGMENT}
@@ -18,7 +18,7 @@ const GET_CHARACTERS = gql`
       }
     }
   }
-`;
+`
 
 const GET_ONE_CHARACTER = gql`
   ${CHARACTER_FRAGMENT}
@@ -27,7 +27,7 @@ const GET_ONE_CHARACTER = gql`
       ...CharacterFields
     }
   }
-`;
+`
 
 const GET_EPISODES = gql`
   ${PAGINATION_FRAGMENT}
@@ -42,7 +42,7 @@ const GET_EPISODES = gql`
       }
     }
   }
-`;
+`
 
 const GET_ONE_EPISODE = gql`
   ${EPISODE_FRAGMENT}
@@ -51,6 +51,6 @@ const GET_ONE_EPISODE = gql`
       ...EpisodeFields
     }
   }
-`;
+`
 
-export { GET_CHARACTERS, GET_ONE_CHARACTER, GET_EPISODES, GET_ONE_EPISODE };
+export { GET_CHARACTERS, GET_ONE_CHARACTER, GET_EPISODES, GET_ONE_EPISODE }

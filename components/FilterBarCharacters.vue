@@ -1,28 +1,28 @@
 <script lang="ts" setup>
-import type { FilterCharacter } from "@types";
+import type { FilterCharacter } from '@types'
 
 const props = defineProps<{
-  filter: FilterCharacter;
-}>();
+  filter: FilterCharacter
+}>()
 const emits = defineEmits<{
-  (e: "update:filter", filter: FilterCharacter): void;
-}>();
+  (e: 'update:filter', filter: FilterCharacter): void
+}>()
 
 const localFilter = ref({
-  name: "",
-  status: "",
-  species: "",
-  type: "",
-  gender: "",
-});
+  name: '',
+  status: '',
+  species: '',
+  type: '',
+  gender: '',
+})
 
 const updateLocalFilter = (propsFilter) =>
-  Object.keys(propsFilter).length ? (localFilter.value = propsFilter) : null;
+  Object.keys(propsFilter).length ? (localFilter.value = propsFilter) : null
 
-watch(() => ({ ...props.filter }), updateLocalFilter, { immediate: true });
+watch(() => ({ ...props.filter }), updateLocalFilter, { immediate: true })
 
 const handleSumbitFilter = () =>
-  emits("update:filter", { ...localFilter.value });
+  emits('update:filter', { ...localFilter.value })
 </script>
 
 <template>
@@ -87,7 +87,7 @@ const handleSumbitFilter = () =>
     &::placeholder {
       color: darken(#fff, 20%);
     }
-    &[data-placeholder="true"] {
+    &[data-placeholder='true'] {
       color: darken(#fff, 20%);
     }
   }

@@ -1,23 +1,23 @@
-import type { BaseGrid } from "@types";
+import type { BaseGrid } from '@types'
 
 class BaseGridModel implements BaseGrid {
-  public page: number;
+  public page: number
 
   public constructor(page: number) {
-    this.page = page;
+    this.page = page
   }
 
   /* Start Page region */
   public updatePage(page: number): void {
-    this.page = page;
+    this.page = page
   }
   public increasePage(): void {
-    this.page++;
+    this.page++
   }
   public decreasePage(): void {
-    this.page--;
+    this.page--
   }
   /* End Page region */
 }
 
-export default BaseGridModel;
+export default BaseGridModel

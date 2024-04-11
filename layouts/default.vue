@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { ElContainer, ElMain, ElFooter, ElHeader } from "element-plus";
+import { ElContainer, ElMain, ElFooter, ElHeader } from 'element-plus'
 </script>
 
 <template>
@@ -13,8 +13,10 @@ import { ElContainer, ElMain, ElFooter, ElHeader } from "element-plus";
       <slot />
     </ElMain>
     <ElFooter style="text-align: center">
-      <small>&copy; Copyright {{ new Date().getFullYear() }}, Example
-        Corporation</small>
+      <small
+        >&copy; Copyright {{ new Date().getFullYear() }}, Example
+        Corporation</small
+      >
     </ElFooter>
   </ElContainer>
 </template>

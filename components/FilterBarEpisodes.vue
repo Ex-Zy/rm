@@ -1,23 +1,23 @@
 <script lang="ts" setup>
-import type { FilterEpisode } from "@types";
+import type { FilterEpisode } from '@types'
 
 const props = defineProps<{
-  filter: FilterEpisode;
-}>();
+  filter: FilterEpisode
+}>()
 const emits = defineEmits<{
-  (e: "update:filter", filter: FilterEpisode): void;
-}>();
+  (e: 'update:filter', filter: FilterEpisode): void
+}>()
 
 const localFilter = ref({
-  name: "",
-  episode: "",
-});
+  name: '',
+  episode: '',
+})
 
 const updateLocalFilter = (propsFilter) =>
-  Object.keys(propsFilter).length ? (localFilter.value = propsFilter) : null;
-watch(() => ({ ...props.filter }), updateLocalFilter, { immediate: true });
+  Object.keys(propsFilter).length ? (localFilter.value = propsFilter) : null
+watch(() => ({ ...props.filter }), updateLocalFilter, { immediate: true })
 const handleSumbitFilter = () =>
-  emits("update:filter", { ...localFilter.value });
+  emits('update:filter', { ...localFilter.value })
 </script>
 
 <template>
@@ -34,11 +34,7 @@ const handleSumbitFilter = () =>
       placeholder="S01E02"
       name="episode"
     />
-    <FormKit
-      type="button"
-      label="Search"
-      @click="handleSumbitFilter"
-    />
+    <FormKit type="button" label="Search" @click="handleSumbitFilter" />
   </div>
 </template>
 
@@ -56,7 +52,7 @@ const handleSumbitFilter = () =>
     &::placeholder {
       color: darken(#fff, 20%);
     }
-    &[data-placeholder="true"] {
+    &[data-placeholder='true'] {
       color: darken(#fff, 20%);
     }
   }

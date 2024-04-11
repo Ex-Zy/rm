@@ -1,4 +1,4 @@
-import { gql } from "@apollo/client/core";
+import { gql } from '@apollo/client/core'
 
 export const PAGINATION_FRAGMENT = gql`
   fragment PaginationFields on Info {
@@ -7,7 +7,7 @@ export const PAGINATION_FRAGMENT = gql`
     next
     prev
   }
-`;
+`
 
 export const LOCATION_FRAGMENT = gql`
   fragment LocationFields on Location {
@@ -17,7 +17,7 @@ export const LOCATION_FRAGMENT = gql`
     type
     created
   }
-`;
+`
 
 export const CHARACTER_FRAGMENT = gql`
   ${LOCATION_FRAGMENT}
@@ -35,7 +35,7 @@ export const CHARACTER_FRAGMENT = gql`
       ...LocationFields
     }
   }
-`;
+`
 
 export const EPISODE_FRAGMENT = gql`
   ${CHARACTER_FRAGMENT}
@@ -50,4 +50,4 @@ export const EPISODE_FRAGMENT = gql`
       ...CharacterFields
     }
   }
-`;
+`

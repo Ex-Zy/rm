@@ -1,14 +1,14 @@
-import { useGetOneCharacterQuery } from "../api/generated";
+import { useGetOneCharacterQuery } from '../api/generated'
 
 const useCharacterDetails = () => {
-  const route = useRoute();
+  const route = useRoute()
   const { result, loading, error } = useGetOneCharacterQuery({
     id: String(route.params.id),
-  });
+  })
 
-  const character = computed(() => result.value?.character ?? {});
+  const character = computed(() => result.value?.character ?? {})
 
-  return { character, error, loading };
-};
+  return { character, error, loading }
+}
 
-export default useCharacterDetails;
+export default useCharacterDetails
