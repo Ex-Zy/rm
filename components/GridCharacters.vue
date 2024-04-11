@@ -18,14 +18,14 @@ const props = defineProps<{
   totalRows: number
   characters: Character[]
 }>()
-const emit = defineEmits<{
-  (e: 'update:page', page: number | string): void
-}>()
+const emit = defineEmits<(e: 'update:page', page: number | string) => void>()
 
 const currentPage = ref(1)
 watchEffect(() => (currentPage.value = props.page))
 
-const updatePage = (page: number) => emit('update:page', page)
+const updatePage = (page: number) => {
+  emit('update:page', page)
+}
 </script>
 
 <template>

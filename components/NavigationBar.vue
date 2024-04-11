@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { ElMenu, ElMenuItem } from 'element-plus'
 const route = useRoute()
-const activeLink = computed(() => route?.path ?? '/')
+const activeLink = computed(() => route.path ?? '/')
 </script>
 
 <template>

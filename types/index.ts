@@ -1,6 +1,6 @@
 export type ID = string | number
 
-export type Character = {
+export interface Character {
   id: ID
   name: string
   status: string
@@ -14,7 +14,7 @@ export type Character = {
   created: string
 }
 
-export type Episode = {
+export interface Episode {
   id: ID
   name: string
   air_date: string
@@ -23,7 +23,7 @@ export type Episode = {
   created: string
 }
 
-export type Location = {
+export interface Location {
   id: ID
   name: string
   type: string
@@ -32,7 +32,7 @@ export type Location = {
   created: string
 }
 
-export type FilterCharacter = {
+export interface FilterCharacter {
   name: string
   status: string
   species: string
@@ -40,7 +40,7 @@ export type FilterCharacter = {
   gender: string
 }
 
-export type FilterEpisode = {
+export interface FilterEpisode {
   name: string
   episode: string
 }
@@ -52,12 +52,12 @@ export interface BaseGrid {
   decreasePage(): void
 }
 
-export type GridCharacters = {
+export interface GridCharacters {
   page: number
   filter?: FilterCharacter
 }
 
-export type GridEpisodes = {
+export interface GridEpisodes {
   page: number
   filter?: FilterEpisode
 }

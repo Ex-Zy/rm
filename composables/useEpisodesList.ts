@@ -7,8 +7,8 @@ const useEpisodesList = <T extends GridState>(gridReactiveModel: T) => {
   return {
     loading,
     error,
-    totalRecords: computed(() => result.value?.episodes.info.count || 0),
-    records: computed(() => result.value?.episodes.results ?? []),
+    totalRecords: computed(() => result.value?.episodes?.info?.count ?? 0),
+    records: computed(() => result.value?.episodes?.results ?? []),
   }
 }
 

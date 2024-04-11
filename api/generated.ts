@@ -3,7 +3,7 @@ import * as VueApolloComposable from '@vue/apollo-composable'
 import * as VueCompositionApi from '@vue/composition-api'
 export type Maybe<T> = T | null
 export type InputMaybe<T> = Maybe<T>
-export type Exact<T extends { [key: string]: unknown }> = {
+export type Exact<T extends Record<string, unknown>> = {
   [K in keyof T]: T[K]
 }
 export type MakeOptional<T, K extends keyof T> = Omit<T, K> & {
@@ -14,7 +14,7 @@ export type MakeMaybe<T, K extends keyof T> = Omit<T, K> & {
 }
 export type ReactiveFunction<TParam> = () => TParam
 /** All built-in and custom scalars, mapped to their actual values */
-export type Scalars = {
+export interface Scalars {
   ID: string
   String: string
   Boolean: boolean
@@ -28,12 +28,12 @@ export enum CacheControlScope {
   Public = 'PUBLIC',
 }
 
-export type Character = {
+export interface Character {
   __typename?: 'Character'
   /** Time at which the character was created in the database. */
   created?: Maybe<Scalars['String']>
   /** Episodes in which this character appeared. */
-  episode: Array<Maybe<Episode>>
+  episode: Maybe<Episode>[]
   /** The gender of the character ('Female', 'Male', 'Genderless' or 'unknown'). */
   gender?: Maybe<Scalars['String']>
   /** The id of the character. */
@@ -57,18 +57,18 @@ export type Character = {
   type?: Maybe<Scalars['String']>
 }
 
-export type Characters = {
+export interface Characters {
   __typename?: 'Characters'
   info?: Maybe<Info>
-  results?: Maybe<Array<Maybe<Character>>>
+  results?: Maybe<Maybe<Character>[]>
 }
 
-export type Episode = {
+export interface Episode {
   __typename?: 'Episode'
   /** The air date of the episode. */
   air_date?: Maybe<Scalars['String']>
   /** List of characters who have been seen in the episode. */
-  characters: Array<Maybe<Character>>
+  characters: Maybe<Character>[]
   /** Time at which the episode was created in the database. */
   created?: Maybe<Scalars['String']>
   /** The code of the episode. */
@@ -79,13 +79,13 @@ export type Episode = {
   name?: Maybe<Scalars['String']>
 }
 
-export type Episodes = {
+export interface Episodes {
   __typename?: 'Episodes'
   info?: Maybe<Info>
-  results?: Maybe<Array<Maybe<Episode>>>
+  results?: Maybe<Maybe<Episode>[]>
 }
 
-export type FilterCharacter = {
+export interface FilterCharacter {
   gender?: InputMaybe<Scalars['String']>
   name?: InputMaybe<Scalars['String']>
   species?: InputMaybe<Scalars['String']>
@@ -93,18 +93,18 @@ export type FilterCharacter = {
   type?: InputMaybe<Scalars['String']>
 }
 
-export type FilterEpisode = {
+export interface FilterEpisode {
   episode?: InputMaybe<Scalars['String']>
   name?: InputMaybe<Scalars['String']>
 }
 
-export type FilterLocation = {
+export interface FilterLocation {
   dimension?: InputMaybe<Scalars['String']>
   name?: InputMaybe<Scalars['String']>
   type?: InputMaybe<Scalars['String']>
 }
 
-export type Info = {
+export interface Info {
   __typename?: 'Info'
   /** The length of the response. */
   count?: Maybe<Scalars['Int']>
@@ -116,7 +116,7 @@ export type Info = {
   prev?: Maybe<Scalars['Int']>
 }
 
-export type Location = {
+export interface Location {
   __typename?: 'Location'
   /** Time at which the location was created in the database. */
   created?: Maybe<Scalars['String']>
@@ -127,79 +127,79 @@ export type Location = {
   /** The name of the location. */
   name?: Maybe<Scalars['String']>
   /** List of characters who have been last seen in the location. */
-  residents: Array<Maybe<Character>>
+  residents: Maybe<Character>[]
   /** The type of the location. */
   type?: Maybe<Scalars['String']>
 }
 
-export type Locations = {
+export interface Locations {
   __typename?: 'Locations'
   info?: Maybe<Info>
-  results?: Maybe<Array<Maybe<Location>>>
+  results?: Maybe<Maybe<Location>[]>
 }
 
-export type Query = {
+export interface Query {
   __typename?: 'Query'
   /** Get a specific character by ID */
   character?: Maybe<Character>
   /** Get the list of all characters */
   characters?: Maybe<Characters>
   /** Get a list of characters selected by ids */
-  charactersByIds?: Maybe<Array<Maybe<Character>>>
+  charactersByIds?: Maybe<Maybe<Character>[]>
   /** Get a specific episode by ID */
   episode?: Maybe<Episode>
   /** Get the list of all episodes */
   episodes?: Maybe<Episodes>
   /** Get a list of episodes selected by ids */
-  episodesByIds?: Maybe<Array<Maybe<Episode>>>
+  episodesByIds?: Maybe<Maybe<Episode>[]>
   /** Get a specific locations by ID */
   location?: Maybe<Location>
   /** Get the list of all locations */
   locations?: Maybe<Locations>
   /** Get a list of locations selected by ids */
-  locationsByIds?: Maybe<Array<Maybe<Location>>>
+  locationsByIds?: Maybe<Maybe<Location>[]>
 }
 
-export type QueryCharacterArgs = {
+export interface QueryCharacterArgs {
   id: Scalars['ID']
 }
 
-export type QueryCharactersArgs = {
+export interface QueryCharactersArgs {
   filter?: InputMaybe<FilterCharacter>
   page?: InputMaybe<Scalars['Int']>
 }
 
-export type QueryCharactersByIdsArgs = {
-  ids: Array<Scalars['ID']>
+export interface QueryCharactersByIdsArgs {
+  ids: Scalars['ID'][]
 }
 
-export type QueryEpisodeArgs = {
+export interface QueryEpisodeArgs {
   id: Scalars['ID']
 }
 
-export type QueryEpisodesArgs = {
+export interface QueryEpisodesArgs {
   filter?: InputMaybe<FilterEpisode>
   page?: InputMaybe<Scalars['Int']>
 }
 
-export type QueryEpisodesByIdsArgs = {
-  ids: Array<Scalars['ID']>
+export interface QueryEpisodesByIdsArgs {
+  ids: Scalars['ID'][]
 }
 
-export type QueryLocationArgs = {
+export interface QueryLocationArgs {
   id: Scalars['ID']
 }
 
-export type QueryLocationsArgs = {
+export interface QueryLocationsArgs {
   filter?: InputMaybe<FilterLocation>
   page?: InputMaybe<Scalars['Int']>
 }
 
-export type QueryLocationsByIdsArgs = {
-  ids: Array<Scalars['ID']>
+export interface QueryLocationsByIdsArgs {
+  ids: Scalars['ID'][]
 }
 
-export type PaginationFieldsFragment = {
+export interface PaginationFieldsFragment {
   __typename?: 'Info'
   count?: number | null
   pages?: number | null
@@ -207,7 +207,7 @@ export type PaginationFieldsFragment = {
   prev?: number | null
 }
 
-export type LocationFieldsFragment = {
+export interface LocationFieldsFragment {
   __typename?: 'Location'
   id?: string | null
   dimension?: string | null
@@ -216,7 +216,7 @@ export type LocationFieldsFragment = {
   created?: string | null
 }
 
-export type CharacterFieldsFragment = {
+export interface CharacterFieldsFragment {
   __typename?: 'Character'
   id?: string | null
   name?: string | null
@@ -236,14 +236,14 @@ export type CharacterFieldsFragment = {
   } | null
 }
 
-export type EpisodeFieldsFragment = {
+export interface EpisodeFieldsFragment {
   __typename?: 'Episode'
   id?: string | null
   name?: string | null
   air_date?: string | null
   episode?: string | null
   created?: string | null
-  characters: Array<{
+  characters: ({
     __typename?: 'Character'
     id?: string | null
     name?: string | null
@@ -261,7 +261,7 @@ export type EpisodeFieldsFragment = {
       type?: string | null
       created?: string | null
     } | null
-  } | null>
+  } | null)[]
 }
 
 export type GetCharactersQueryVariables = Exact<{
@@ -269,7 +269,7 @@ export type GetCharactersQueryVariables = Exact<{
   filter?: InputMaybe<FilterCharacter>
 }>
 
-export type GetCharactersQuery = {
+export interface GetCharactersQuery {
   __typename?: 'Query'
   characters?: {
     __typename?: 'Characters'
@@ -280,25 +280,27 @@ export type GetCharactersQuery = {
       next?: number | null
       prev?: number | null
     } | null
-    results?: Array<{
-      __typename?: 'Character'
-      id?: string | null
-      name?: string | null
-      status?: string | null
-      species?: string | null
-      type?: string | null
-      gender?: string | null
-      image?: string | null
-      created?: string | null
-      location?: {
-        __typename?: 'Location'
-        id?: string | null
-        dimension?: string | null
-        name?: string | null
-        type?: string | null
-        created?: string | null
-      } | null
-    } | null> | null
+    results?:
+      | ({
+          __typename?: 'Character'
+          id?: string | null
+          name?: string | null
+          status?: string | null
+          species?: string | null
+          type?: string | null
+          gender?: string | null
+          image?: string | null
+          created?: string | null
+          location?: {
+            __typename?: 'Location'
+            id?: string | null
+            dimension?: string | null
+            name?: string | null
+            type?: string | null
+            created?: string | null
+          } | null
+        } | null)[]
+      | null
   } | null
 }
 
@@ -306,7 +308,7 @@ export type GetOneCharacterQueryVariables = Exact<{
   id?: InputMaybe<Scalars['ID']>
 }>
 
-export type GetOneCharacterQuery = {
+export interface GetOneCharacterQuery {
   __typename?: 'Query'
   character?: {
     __typename?: 'Character'
@@ -334,7 +336,7 @@ export type GetEpisodesQueryVariables = Exact<{
   filter?: InputMaybe<FilterEpisode>
 }>
 
-export type GetEpisodesQuery = {
+export interface GetEpisodesQuery {
   __typename?: 'Query'
   episodes?: {
     __typename?: 'Episodes'
@@ -345,33 +347,35 @@ export type GetEpisodesQuery = {
       next?: number | null
       prev?: number | null
     } | null
-    results?: Array<{
-      __typename?: 'Episode'
-      id?: string | null
-      name?: string | null
-      air_date?: string | null
-      episode?: string | null
-      created?: string | null
-      characters: Array<{
-        __typename?: 'Character'
-        id?: string | null
-        name?: string | null
-        status?: string | null
-        species?: string | null
-        type?: string | null
-        gender?: string | null
-        image?: string | null
-        created?: string | null
-        location?: {
-          __typename?: 'Location'
+    results?:
+      | ({
+          __typename?: 'Episode'
           id?: string | null
-          dimension?: string | null
           name?: string | null
-          type?: string | null
+          air_date?: string | null
+          episode?: string | null
           created?: string | null
-        } | null
-      } | null>
-    } | null> | null
+          characters: ({
+            __typename?: 'Character'
+            id?: string | null
+            name?: string | null
+            status?: string | null
+            species?: string | null
+            type?: string | null
+            gender?: string | null
+            image?: string | null
+            created?: string | null
+            location?: {
+              __typename?: 'Location'
+              id?: string | null
+              dimension?: string | null
+              name?: string | null
+              type?: string | null
+              created?: string | null
+            } | null
+          } | null)[]
+        } | null)[]
+      | null
   } | null
 }
 
@@ -379,7 +383,7 @@ export type GetOneEpisodesQueryVariables = Exact<{
   id?: InputMaybe<Scalars['ID']>
 }>
 
-export type GetOneEpisodesQuery = {
+export interface GetOneEpisodesQuery {
   __typename?: 'Query'
   episode?: {
     __typename?: 'Episode'
@@ -388,7 +392,7 @@ export type GetOneEpisodesQuery = {
     air_date?: string | null
     episode?: string | null
     created?: string | null
-    characters: Array<{
+    characters: ({
       __typename?: 'Character'
       id?: string | null
       name?: string | null
@@ -406,7 +410,7 @@ export type GetOneEpisodesQuery = {
         type?: string | null
         created?: string | null
       } | null
-    } | null>
+    } | null)[]
   } | null
 }
 

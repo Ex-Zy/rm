@@ -4,9 +4,7 @@ import type { FilterEpisode } from '@types'
 const props = defineProps<{
   filter: FilterEpisode
 }>()
-const emits = defineEmits<{
-  (e: 'update:filter', filter: FilterEpisode): void
-}>()
+const emits = defineEmits<(e: 'update:filter', filter: FilterEpisode) => void>()
 
 const localFilter = ref({
   name: '',
@@ -16,8 +14,9 @@ const localFilter = ref({
 const updateLocalFilter = (propsFilter) =>
   Object.keys(propsFilter).length ? (localFilter.value = propsFilter) : null
 watch(() => ({ ...props.filter }), updateLocalFilter, { immediate: true })
-const handleSumbitFilter = () =>
+const handleSumbitFilter = () => {
   emits('update:filter', { ...localFilter.value })
+}
 </script>
 
 <template>
