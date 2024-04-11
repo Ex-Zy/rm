@@ -29,9 +29,15 @@ defineProps<{
 </script>
 
 <template>
-  <ElCard class="box-card" style="margin: 40px auto 0">
+  <ElCard
+    class="box-card"
+    style="margin: 40px auto 0"
+  >
     <template #header>
-      <div class="card-header" style="justify-content: center">
+      <div
+        class="card-header"
+        style="justify-content: center"
+      >
         <span>
           #{{ character.id }}
           <strong>{{ character.name }}</strong>
@@ -39,18 +45,32 @@ defineProps<{
       </div>
     </template>
     <div style="display: flex; justify-content: center; margin-bottom: 20px">
-      <ElAvatar shape="square" :size="300" :src="character.image" />
+      <ElAvatar
+        shape="square"
+        :size="300"
+        :src="character.image"
+      />
     </div>
-    <ElDescriptions direction="vertical" :column="4" size="large" border>
+    <ElDescriptions
+      direction="vertical"
+      :column="4"
+      size="large"
+      border
+    >
       <ElDescriptionsItem label="Species">
         {{ character.species }}
       </ElDescriptionsItem>
       <ElDescriptionsItem label="Created">
         {{ dayjs(character.created).format("MM/DD/YYYY") }}
       </ElDescriptionsItem>
-      <ElDescriptionsItem label="Gender" :span="2">{{
-        character.gender
-      }}</ElDescriptionsItem>
+      <ElDescriptionsItem
+        label="Gender"
+        :span="2"
+      >
+        {{
+          character.gender
+        }}
+      </ElDescriptionsItem>
       <ElDescriptionsItem label="Status">
         <ElTag
           :type="CharacterService.transformStatusIntoType(character.status)"

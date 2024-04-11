@@ -13,7 +13,10 @@ const { episode, error, loading } = useEpisodeDetails();
       show-icon
     />
     <ClientOnly v-else>
-      <CardEpisode v-loading="loading" :episode="episode" />
+      <CardEpisode
+        v-loading="loading"
+        :episode="episode"
+      />
       <template #fallback>
         <ElSkeleton
           animated

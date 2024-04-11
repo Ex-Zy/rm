@@ -13,9 +13,12 @@
     "@graphql-codegen/typescript": "^2.7.3",
     "@graphql-codegen/typescript-operations": "^2.5.3",
     "@graphql-codegen/typescript-vue-apollo": "^3.3.3",
-    "@nuxt/eslint": "^0.3.6",
+    "@nuxt/eslint-config": "^0.3.6",
+    "eslint": "^8.57.0",
     "nuxt": "^3.11.2",
-    "sass": "^1.54.5"
+    "sass": "^1.54.5",
+    "typescript": "^5.4.5",
+    "vue-tsc": "^1.8.27"
   },
   "dependencies": {
     "@apollo/client": "^3.6.9",

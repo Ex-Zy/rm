@@ -36,29 +36,64 @@ const updatePage = (page: number) => emit("update:page", page);
     stripe
     border
   >
-    <ElTableColumn prop="id" label="id" width="50" />
-    <ElTableColumn prop="name" label="Name" width="250">
+    <ElTableColumn
+      prop="id"
+      label="id"
+      width="50"
+    />
+    <ElTableColumn
+      prop="name"
+      label="Name"
+      width="250"
+    >
       <template #default="{ row }">
-        <NuxtLink :to="`/characters/${row.id}`" style="text-decoration: none">
+        <NuxtLink
+          :to="`/characters/${row.id}`"
+          style="text-decoration: none"
+        >
           <ElLink type="primary">
             {{ row.name }}
           </ElLink>
         </NuxtLink>
       </template>
     </ElTableColumn>
-    <ElTableColumn prop="image" label="Avatar" width="80">
+    <ElTableColumn
+      prop="image"
+      label="Avatar"
+      width="80"
+    >
       <template #default="{ row }">
-        <ElAvatar :size="50" :src="row.image" />
+        <ElAvatar
+          :size="50"
+          :src="row.image"
+        />
       </template>
     </ElTableColumn>
-    <ElTableColumn prop="species" label="Species" width="100" />
-    <ElTableColumn prop="created" label="Created" sortable>
+    <ElTableColumn
+      prop="species"
+      label="Species"
+      width="100"
+    />
+    <ElTableColumn
+      prop="created"
+      label="Created"
+      sortable
+    >
       <template #default="{ row }">
         {{ dayjs(row.created).format("MM/DD/YYYY") }}
       </template>
     </ElTableColumn>
-    <ElTableColumn prop="gender" label="Gender" width="100" />
-    <ElTableColumn prop="status" label="Status" width="100" align="center">
+    <ElTableColumn
+      prop="gender"
+      label="Gender"
+      width="100"
+    />
+    <ElTableColumn
+      prop="status"
+      label="Status"
+      width="100"
+      align="center"
+    >
       <template #default="{ row }">
         <ElTag
           :type="CharacterService.transformStatusIntoType(row.status)"
@@ -70,12 +105,18 @@ const updatePage = (page: number) => emit("update:page", page);
         </ElTag>
       </template>
     </ElTableColumn>
-    <ElTableColumn prop="location" label="Location">
+    <ElTableColumn
+      prop="location"
+      label="Location"
+    >
       <template #default="{ row }">
         {{ row.location.dimension }}
       </template>
     </ElTableColumn>
-    <ElTableColumn prop="type" label="Type">
+    <ElTableColumn
+      prop="type"
+      label="Type"
+    >
       <template #default="{ row }">
         {{ row.type || "Unknown" }}
       </template>

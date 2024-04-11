@@ -15,10 +15,15 @@ const { records, loading, error, totalRecords } = useEpisodesList(gridModel);
         @update:filter="(filter) => gridModel.updateFilter(filter)"
       />
       <template #fallback>
-        <ElSkeleton :rows="1" animated />
+        <ElSkeleton
+          :rows="1"
+          animated
+        />
       </template>
     </ClientOnly>
-    <h2 style="text-align: center">List of Rick and Morty episodes</h2>
+    <h2 style="text-align: center">
+      List of Rick and Morty episodes
+    </h2>
     <ElAlert
       v-if="error"
       :title="error.message"
@@ -35,7 +40,10 @@ const { records, loading, error, totalRecords } = useEpisodesList(gridModel);
         @update:page="(page) => gridModel.updatePage(page)"
       />
       <template #fallback>
-        <ElSkeleton :rows="12" animated />
+        <ElSkeleton
+          :rows="12"
+          animated
+        />
       </template>
     </ClientOnly>
   </div>

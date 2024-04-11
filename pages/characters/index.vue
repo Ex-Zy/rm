@@ -18,7 +18,10 @@ const { records, loading, error, totalRecords } = useCharactersList(gridModel);
         @update:filter="(filter) => gridModel.updateFilter(filter)"
       />
       <template #fallback>
-        <ElSkeleton :rows="1" animated />
+        <ElSkeleton
+          :rows="1"
+          animated
+        />
       </template>
     </ClientOnly>
     <h2 style="text-align: center">
@@ -40,7 +43,10 @@ const { records, loading, error, totalRecords } = useCharactersList(gridModel);
         @update:page="(page) => gridModel.updatePage(page)"
       />
       <template #fallback>
-        <ElSkeleton :rows="12" animated />
+        <ElSkeleton
+          :rows="12"
+          animated
+        />
       </template>
     </ClientOnly>
   </div>

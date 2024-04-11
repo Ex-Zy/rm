@@ -8,7 +8,7 @@ const isProduction = process.env.NODE_ENV === "production";
 
 export default defineNuxtConfig({
   devtools: { enabled: true },
-  modules: ["@formkit/nuxt", "@nuxt/eslint"],
+  modules: ["@formkit/nuxt"],
   css: ["element-plus/dist/index.css", "@formkit/themes/genesis"],
   alias: {
     "@": resolveUrl("./"),
@@ -24,4 +24,8 @@ export default defineNuxtConfig({
       ...(isProduction ? ["dayjs", "element-plus"] : []),
     ],
   },
+  typescript: {
+    typeCheck: true,
+    strict: true,
+  }
 });

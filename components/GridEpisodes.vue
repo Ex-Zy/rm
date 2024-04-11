@@ -39,7 +39,9 @@ const updatePage = (page: number) => emit("update:page", page);
     <ElTableColumn type="expand">
       <template #default="{ row }">
         <div style="padding: 10px">
-          <h3 style="margin: 0">Characters</h3>
+          <h3 style="margin: 0">
+            Characters
+          </h3>
           <ElTooltip
             v-for="character in row.characters"
             :key="character.id"
@@ -58,19 +60,44 @@ const updatePage = (page: number) => emit("update:page", page);
         </div>
       </template>
     </ElTableColumn>
-    <ElTableColumn prop="id" label="id" width="50" />
-    <ElTableColumn prop="name" label="Name" width="300">
+    <ElTableColumn
+      prop="id"
+      label="id"
+      width="50"
+    />
+    <ElTableColumn
+      prop="name"
+      label="Name"
+      width="300"
+    >
       <template #default="{ row }">
-        <NuxtLink :to="`/episodes/${row.id}`" style="text-decoration: none">
+        <NuxtLink
+          :to="`/episodes/${row.id}`"
+          style="text-decoration: none"
+        >
           <ElLink type="primary">
             {{ row.name }}
           </ElLink>
         </NuxtLink>
       </template>
     </ElTableColumn>
-    <ElTableColumn prop="air_date" label="Air date" width="200" sortable />
-    <ElTableColumn prop="episode" label="Episode" width="150" sortable />
-    <ElTableColumn prop="created" label="Created" sortable>
+    <ElTableColumn
+      prop="air_date"
+      label="Air date"
+      width="200"
+      sortable
+    />
+    <ElTableColumn
+      prop="episode"
+      label="Episode"
+      width="150"
+      sortable
+    />
+    <ElTableColumn
+      prop="created"
+      label="Created"
+      sortable
+    >
       <template #default="{ row }">
         {{ dayjs(row.created).format("MM/DD/YYYY") }}
       </template>

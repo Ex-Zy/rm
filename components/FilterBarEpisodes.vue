@@ -34,7 +34,11 @@ const handleSumbitFilter = () =>
       placeholder="S01E02"
       name="episode"
     />
-    <FormKit type="button" label="Search" @click="handleSumbitFilter" />
+    <FormKit
+      type="button"
+      label="Search"
+      @click="handleSumbitFilter"
+    />
   </div>
 </template>
 
