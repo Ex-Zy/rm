@@ -5,8 +5,10 @@
     "dev": "nuxt dev",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
-    "lint": "eslint . --fix",
-    "format": "npx prettier . --write",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "format": "npx prettier . --check",
+    "format:fix": "npx prettier . --write",
     "codegen": "graphql-codegen"
   },
   "devDependencies": {
