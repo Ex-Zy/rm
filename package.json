@@ -13,6 +13,7 @@
     "@graphql-codegen/typescript": "^2.7.3",
     "@graphql-codegen/typescript-operations": "^2.5.3",
     "@graphql-codegen/typescript-vue-apollo": "^3.3.3",
+    "@nuxt/eslint": "^0.3.6",
     "nuxt": "^3.11.2",
     "sass": "^1.54.5"
   },

@@ -8,7 +8,7 @@ const isProduction = process.env.NODE_ENV === "production";
 
 export default defineNuxtConfig({
   devtools: { enabled: true },
-  modules: ["@formkit/nuxt"],
+  modules: ["@formkit/nuxt", "@nuxt/eslint"],
   css: ["element-plus/dist/index.css", "@formkit/themes/genesis"],
   alias: {
     "@": resolveUrl("./"),
